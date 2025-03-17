@@ -1,0 +1,9 @@
+postgres/data
+fastapi/node_modules
+fastapi/venv
+fastapi/env
+fastapi/env.local
+fastapi/env.development.local
+fastapi/env.test.local
+fastapi/env.production.local
+nocodb/data

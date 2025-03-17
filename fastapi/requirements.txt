@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-dateutil
+slowapi
+prometheus-fastapi-instrumentator
+asyncpg
+httpx
+geoip2

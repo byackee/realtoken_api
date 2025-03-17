@@ -1,0 +1,29 @@
+apiVersion: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    uid: postgres_ds_geo
+    url: postgres:5432
+    user: nocodb
+    secureJsonData:
+      password: nocodbpassword
+    jsonData:
+      database: realtoken
+      sslmode: disable
+      maxOpenConns: 100
+      maxIdleConns: 100
+      maxIdleConnsAuto: true
+      connMaxLifetime: 14400
+      postgresVersion: 15
+      timescaledb: false
+    editable: true
+    # Options de provisionnement
+    isDefault: false
+    version: 1
+    # Autoriser la mise à jour des datasources existantes
+    allowUiUpdates: true
+    # Ne pas supprimer la datasource si elle n'est plus présente dans la configuration
+    disableDeletion: true
+    # Mettre à jour la datasource si elle existe déjà
+    updateIntervalSeconds: 30 
