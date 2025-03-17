@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Récupération des variables d'environnement
-LICENSE_KEY=""
-ACCOUNT_ID=""
+LICENSE_KEY="   "
+ACCOUNT_ID="1141003"
 DB_PATH=${GEOIP_DB_PATH:-/usr/share/GeoIP}
 
 echo "⏱️ Démarrage de la mise à jour GeoIP - $(date)"
@@ -44,11 +44,11 @@ download_alternative() {
     rm -rf "/tmp/geolite" "/tmp/GeoLite2-City.tar.gz"
   fi
   
-  # Tentative directe
-  echo "📥 Téléchargement direct d'une base alternative..."
+  # Tentative directe - MODIFIÉE POUR UTILISER UNE BASE CITY AU LIEU DE COUNTRY
+  echo "📥 Téléchargement direct d'une base City alternative..."
   if wget -q --no-check-certificate -O "${DB_PATH}/GeoLite2-City.mmdb" \
-     "https://raw.githubusercontent.com/Dreamacro/maxmind-geoip/release/Country.mmdb"; then
-    echo "✅ Base de données alternative téléchargée avec succès"
+     "https://raw.githubusercontent.com/Hackl0us/GeoIP2-CN/release/GeoLite2-City.mmdb"; then
+    echo "✅ Base de données City alternative téléchargée avec succès"
     return 0
   fi
   
