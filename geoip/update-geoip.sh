@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Récupération des variables d'environnement
-LICENSE_KEY="   "
-ACCOUNT_ID="1141003"
+LICENSE_KEY=""
+ACCOUNT_ID=""
 DB_PATH=${GEOIP_DB_PATH:-/usr/share/GeoIP}
 
 echo "⏱️ Démarrage de la mise à jour GeoIP - $(date)"

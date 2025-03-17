@@ -56,8 +56,7 @@ services:
       - nocodb
       - geoip
     volumes:
-      - ./fastapi:/app:ro
-      - ./fastapi/node_modules:/node_modules_persist
+      - ./fastapi:/app
       - geoip_data:/usr/share/GeoIP:ro
     environment:
       - NOCODB_URL=http://nocodb:8085

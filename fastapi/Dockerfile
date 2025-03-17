@@ -22,11 +22,6 @@ RUN npm install -g node-fetch@2
 # Copie des fichiers de dépendances d'abord
 COPY package.json package-lock.json* /app/
 
-# Installation des dépendances Node.js (avec --no-optional pour éviter certains problèmes)
-RUN npm install --no-optional
-# Installation explicite de pg avec --save pour l'ajouter aux dépendances
-RUN npm install pg@8.14.0 --save
-
 # Copie des fichiers Python et installation des dépendances FastAPI
 COPY requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
@@ -37,13 +32,17 @@ RUN pip install --no-cache-dir geoip2
 # Copie du reste du projet
 COPY --chown=root:root . .
 
-# Création d'un répertoire node_modules persistant qui ne sera pas écrasé par le montage du volume
-RUN mkdir -p /node_modules_persist && \
-    cp -R /app/node_modules/* /node_modules_persist/ && \
-    echo "NODE_PATH=/node_modules_persist" >> /etc/environment
+# Création d'un script d'initialisation pour installer pg au démarrage
+RUN echo '#!/bin/bash\n\
+if [ ! -d "/app/node_modules/pg" ]; then\n\
+  echo "Installation du module pg..."\n\
+  npm install pg@8.14.0\n\
+fi\n\
+exec "$@"' > /entrypoint.sh && \
+chmod +x /entrypoint.sh
 
-# Définition de la variable d'environnement pour Node
-ENV NODE_PATH=/node_modules_persist
+# Définir le script comme point d'entrée
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Commande pour démarrer FastAPI avec Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--proxy-headers"]
