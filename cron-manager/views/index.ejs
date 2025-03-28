@@ -1,0 +1,277 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Tâches Cron</h1>
+  <div class="d-flex align-items-center">
+    <div class="me-3">
+      <span id="timer-display" class="badge bg-secondary d-none">
+        <i class="fas fa-clock"></i> Actualisation dans <span id="countdown">0</span>s
+      </span>
+    </div>
+    <div class="btn-group me-2" role="group">
+      <button type="button" class="btn btn-sm btn-outline-secondary refresh-option" data-seconds="0">
+        <i class="fas fa-ban"></i> Off
+      </button>
+      <button type="button" class="btn btn-sm btn-outline-secondary refresh-option" data-seconds="5">
+        5s
+      </button>
+      <button type="button" class="btn btn-sm btn-outline-secondary refresh-option" data-seconds="15">
+        15s
+      </button>
+      <button type="button" class="btn btn-sm btn-outline-secondary refresh-option" data-seconds="30">
+        30s
+      </button>
+      <button type="button" class="btn btn-sm btn-outline-secondary refresh-option" data-seconds="60">
+        1min
+      </button>
+    </div>
+    <a href="/" class="btn btn-sm btn-outline-primary">
+      <i class="fas fa-sync"></i> Rafraîchir
+    </a>
+  </div>
+</div>
+
+<% if (jobs && jobs.length > 0) { %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Nom</th>
+          <th>Script</th>
+          <th>Expression Cron</th>
+          <th>Statut</th>
+          <th>Dernière exécution</th>
+          <th>Résultat</th>
+          <th>Prochaine exécution</th>
+          <th class="actions-column">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% jobs.forEach(job => { %>
+          <tr>
+            <td><strong><%= job.name %></strong></td>
+            <td><code><%= job.script_path.split('/').pop() %></code></td>
+            <td><code><%= job.cron_expression %></code></td>
+            <td>
+              <% if (job.status === 'running') { %>
+                <span class="badge bg-success"><i class="fas fa-play-circle task-running"></i> En cours</span>
+              <% } else { %>
+                <span class="badge bg-secondary"><i class="fas fa-stop-circle task-stopped"></i> Arrêté</span>
+              <% } %>
+            </td>
+            <td>
+              <%= job.last_run ? new Date(job.last_run).toLocaleString('fr-FR') : 'Jamais' %>
+            </td>
+            <td>
+              <% if (job.last_status === 'success') { %>
+                <span class="badge bg-success"><i class="fas fa-check-circle task-success"></i> Succès</span>
+              <% } else if (job.last_status === 'failed') { %>
+                <span class="badge bg-danger"><i class="fas fa-times-circle task-failed"></i> Échec</span>
+              <% } else { %>
+                <span class="badge bg-secondary">Inconnu</span>
+              <% } %>
+            </td>
+            <td class="next-run-cell">
+              <% if (job.status === 'running' && job.next_run) { %>
+                <div>
+                  <div><%= new Date(job.next_run).toLocaleString('fr-FR') %></div>
+                  <div>
+                    <span class="badge bg-info next-run-countdown" 
+                          data-next-run="<%= new Date(job.next_run).getTime() %>"
+                          data-job-id="<%= job.id %>">
+                      <i class="fas fa-hourglass-half"></i> 
+                      <span class="countdown-text">Calcul...</span>
+                    </span>
+                  </div>
+                </div>
+              <% } else { %>
+                <span class="text-muted">Non programmé</span>
+              <% } %>
+            </td>
+            <td>
+              <div class="btn-group">
+                <% if (job.status === 'running') { %>
+                  <a href="/stop/<%= job.id %>" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-stop"></i> Arrêter
+                  </a>
+                <% } else { %>
+                  <a href="/start/<%= job.id %>" class="btn btn-sm btn-outline-success">
+                    <i class="fas fa-play"></i> Démarrer
+                  </a>
+                <% } %>
+                <a href="/run/<%= job.id %>" class="btn btn-sm btn-outline-primary">
+                  <i class="fas fa-bolt"></i> Exécuter
+                </a>
+                <a href="/logs/<%= job.id %>" class="btn btn-sm btn-outline-info">
+                  <i class="fas fa-file-alt"></i> Logs
+                </a>
+                <a href="/edit/<%= job.id %>" class="btn btn-sm btn-outline-secondary">
+                  <i class="fas fa-edit"></i> Modifier
+                </a>
+                <a href="/delete/<%= job.id %>" class="btn btn-sm btn-outline-danger" 
+                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette tâche?')">
+                  <i class="fas fa-trash"></i> Supprimer
+                </a>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+<% } else { %>
+  <div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> Aucune tâche cron n'a été configurée. 
+    <a href="/create" class="alert-link">Créer une nouvelle tâche</a>.
+  </div>
+<% } %>
+
+<div class="mt-4">
+  <a href="/create" class="btn btn-primary">
+    <i class="fas fa-plus"></i> Nouvelle tâche
+  </a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Variables pour l'auto-refresh
+    let refreshInterval = null;
+    let countdownValue = 0;
+    let timerDisplay = document.getElementById('timer-display');
+    let countdownElement = document.getElementById('countdown');
+    
+    // Fonction de décompte pour l'auto-refresh de la page
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.textContent = countdownValue;
+      
+      if (countdownValue <= 0) {
+        // Rediriger vers la même page pour rafraîchir
+        window.location.href = window.location.href;
+      }
+    }
+    
+    // Fonction pour démarrer l'auto-refresh
+    function startAutoRefresh(seconds) {
+      // Arrêter tout timer existant
+      stopAutoRefresh();
+      
+      // Si seconds est 0, désactiver l'auto-refresh
+      if (seconds === 0) {
+        timerDisplay.classList.add('d-none');
+        return;
+      }
+      
+      // Initialiser le décompte
+      countdownValue = seconds;
+      countdownElement.textContent = countdownValue;
+      timerDisplay.classList.remove('d-none');
+      
+      // Démarrer l'intervalle
+      refreshInterval = setInterval(updateCountdown, 1000);
+    }
+    
+    // Fonction pour arrêter l'auto-refresh
+    function stopAutoRefresh() {
+      if (refreshInterval) {
+        clearInterval(refreshInterval);
+        refreshInterval = null;
+      }
+    }
+    
+    // Gestion des boutons de rafraîchissement
+    const refreshButtons = document.querySelectorAll('.refresh-option');
+    refreshButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Supprimer la classe active de tous les boutons
+        refreshButtons.forEach(btn => btn.classList.remove('active', 'btn-secondary'));
+        
+        // Ajouter la classe active au bouton cliqué
+        this.classList.add('active', 'btn-secondary');
+        
+        // Récupérer la valeur en secondes
+        const seconds = parseInt(this.getAttribute('data-seconds'), 10);
+        
+        // Démarrer l'auto-refresh avec cette valeur
+        startAutoRefresh(seconds);
+        
+        // Stocker la préférence dans localStorage
+        localStorage.setItem('autoRefreshInterval', seconds);
+      });
+    });
+    
+    // Vérifier s'il y a une préférence sauvegardée
+    const savedInterval = localStorage.getItem('autoRefreshInterval');
+    if (savedInterval && savedInterval !== '0') {
+      // Activer le bouton correspondant
+      const button = document.querySelector(`.refresh-option[data-seconds="${savedInterval}"]`);
+      if (button) {
+        button.click();
+      }
+    } else {
+      // Activer le bouton "Off" par défaut
+      document.querySelector('.refresh-option[data-seconds="0"]').classList.add('active', 'btn-secondary');
+    }
+    
+    // Fonction pour formater le temps restant
+    function formatTimeRemaining(milliseconds) {
+      if (milliseconds <= 0) {
+        return "Imminent";
+      }
+      
+      const seconds = Math.floor(milliseconds / 1000);
+      
+      if (seconds < 60) {
+        return `${seconds}s`;
+      }
+      
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      
+      if (minutes < 60) {
+        return `${minutes}m ${remainingSeconds}s`;
+      }
+      
+      const hours = Math.floor(minutes / 60);
+      const remainingMinutes = minutes % 60;
+      
+      if (hours < 24) {
+        return `${hours}h ${remainingMinutes}m`;
+      }
+      
+      const days = Math.floor(hours / 24);
+      const remainingHours = hours % 24;
+      
+      return `${days}j ${remainingHours}h`;
+    }
+    
+    // Fonction pour mettre à jour tous les compteurs de prochaine exécution
+    function updateAllNextRunCountdowns() {
+      const countdowns = document.querySelectorAll('.next-run-countdown');
+      const now = new Date().getTime();
+      
+      countdowns.forEach(countdown => {
+        const nextRunTime = parseInt(countdown.getAttribute('data-next-run'), 10);
+        const timeRemaining = nextRunTime - now;
+        const countdownText = countdown.querySelector('.countdown-text');
+        
+        if (timeRemaining <= 0) {
+          countdownText.textContent = "Imminent";
+          countdown.classList.remove('bg-info');
+          countdown.classList.add('bg-warning');
+        } else {
+          countdownText.textContent = formatTimeRemaining(timeRemaining);
+          countdown.classList.add('bg-info');
+          countdown.classList.remove('bg-warning');
+        }
+      });
+    }
+    
+    // Mettre à jour les compteurs immédiatement
+    updateAllNextRunCountdowns();
+    
+    // Mettre à jour les compteurs toutes les secondes
+    setInterval(updateAllNextRunCountdowns, 1000);
+    
+    // Arrêter l'auto-refresh lorsque l'utilisateur quitte la page
+    window.addEventListener('beforeunload', stopAutoRefresh);
+  });
+</script>

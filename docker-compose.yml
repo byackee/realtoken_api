@@ -63,6 +63,27 @@ services:
       - GEOIP_DB_PATH=/usr/share/GeoIP/GeoLite2-City.mmdb
     restart: unless-stopped
 
+  cron-manager:
+    build:
+      context: ./cron-manager
+      dockerfile: Dockerfile
+    ports:
+      - "8081:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./cron-manager/scripts:/app/scripts
+      - ./cron-manager/logs:/app/logs
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=nocodb
+      - DB_PASSWORD=nocodbpassword
+      - DB_NAME=nocodb
+      - DB_PORT=5432
+      - SCRIPTS_PATH=/app/scripts
+      - LOGS_DIR=/app/logs
+    restart: unless-stopped
+
   prometheus:
     image: prom/prometheus:latest
     ports:

@@ -1,0 +1,696 @@
+[2025-03-28T21:12:52.236Z] ========== DÉBUT DE L'EXÉCUTION MANUELLE DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T21:12:55.062Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 61 wallets
+🔄 Mise à jour du champ "updated_at" pour 61 wallets...
+✅ 61 wallets mis à jour
+📡 Interrogation de TheGraph pour 61 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 4799 records
+✅ 4799 enregistrements mis à jour
+✅ 632 enregistrements insérés
+🗑️ Suppression de 3 records...
+✅ 3 enregistrements supprimés
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T21:12:55.062Z] ========== FIN DE L'EXÉCUTION MANUELLE (STATUT: success) ==========
+
+[2025-03-28T21:40:00.480Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T21:40:02.982Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 61 wallets
+🔄 Mise à jour du champ "updated_at" pour 61 wallets...
+✅ 61 wallets mis à jour
+📡 Interrogation de TheGraph pour 61 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5430 records
+✅ 5430 enregistrements mis à jour
+🗑️ Suppression de 1 records...
+✅ 1 enregistrements supprimés
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T21:40:02.982Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T21:45:00.526Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T21:45:02.282Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 61 wallets
+🔄 Mise à jour du champ "updated_at" pour 61 wallets...
+✅ 61 wallets mis à jour
+📡 Interrogation de TheGraph pour 61 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5430 records
+✅ 5430 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T21:45:02.282Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T21:50:00.880Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T21:50:03.156Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5430 records
+✅ 5430 enregistrements mis à jour
+✅ 16 enregistrements insérés
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T21:50:03.156Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T21:55:00.920Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T21:55:03.007Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5446 records
+✅ 5446 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T21:55:03.008Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T22:00:00.686Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T22:00:04.819Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5446 records
+✅ 5446 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T22:00:04.820Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T22:05:00.726Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T22:05:06.301Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5446 records
+✅ 5446 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T22:05:06.301Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T22:10:00.907Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T22:10:02.482Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5446 records
+✅ 5446 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T22:10:02.482Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T22:15:00.128Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch balances (ID: 3) ==========
+[2025-03-28T22:15:01.639Z] 🟢 Connexion PostgreSQL réussie.
+🗄️  Récupération de 62 wallets
+🔄 Mise à jour du champ "updated_at" pour 62 wallets...
+✅ 62 wallets mis à jour
+📡 Interrogation de TheGraph pour 62 adresses
+🔍 Adresses envoyées à TheGraph: [
+  '0x5dbb27c94eed85a71f4a5f603351f24f2d83bd41',
+  '0x992003355165b8bcf1d77c356ba5c488c9077e4c',
+  '0xed170ee9717d2845402501ba1a2ad7b0ce201a46',
+  '0x6c35b4f5f62b5c2c0e031a17ffae0b889e4dbdce',
+  '0x6fbf924388c74a1a61ad017ead8f4995a3f0ead6',
+  '0x669582b7e0e2a5487f7a7cd7a375495d367127b8',
+  '0xdabf1adf9b8dfd751fa2d27d0ce616290c553b40',
+  '0xc5aa62a70bedda5beef4caab5a7784b054c5c743',
+  '0x1e40d6bc1fc11d71d0133c71c916dcd087cc0171',
+  '0x6414615e1e3de2518dd1ada5c9b0d1015262acce',
+  '0xee1b0b5393e10e0594f132f606d0dae40cfcbf45',
+  '0x3e55a0997fc8e175ee9358764e443c7952b69afa',
+  '0x0e955f9ffeead3083eaff8ae7e60479cc173437b',
+  '0xbdb269e663e61d50c119e063d758d0ea9ccc8ccd',
+  '0x190a0af96c3f98d3c120860f1a3aef152acb0162',
+  '0x245702b4e131f9625606ab5f6f53db9b9e58acb5',
+  '0x4dd57b2dbfbfadbdff109f3914db377d5add414b',
+  '0x7e85c39420d9476175042997db1cb28c109b74b7',
+  '0x462e909e31061298d5a3d15740fed37f81db1e49',
+  '0xff23faf092526256987b52bc2155ab40fb453bb3',
+  '0xce462148c5dc644085667fb4dcf67722b505d320',
+  '0x65dd1da49d64896a8315f61a143de97c6e401f5e',
+  '0x622344eec92c3de736e19ffbbe6e9cc017b2c6fe',
+  '0x042e4f113e24e2734100733cfeeae5d7c0ddd15b',
+  '0xee5c6d660a83e086610f2c9ebb88a1de83a856f5',
+  '0xe0b7151c2ca832ae78a5de2a3b74a5d962ae0b97',
+  '0x25db0ac55d40433bc1482abbeac5b2b0f4252099',
+  '0x407b067fdd4c3ad4959592f824ed33060a2dcbc3',
+  '0x83cfa4979ca7ed7877e46797b5f5b04bef0f7824',
+  '0x3cbb1b730dcdc01ab752a06f1da9f381f35428ef',
+  '0x8ed4b22c2e7489cec9a0597518cdf916947f2978',
+  '0xc9308110b7782cd23e5ab16bd12b72dd697e0a2e',
+  '0xb9f7ecdd3475a7bfe4bec60bd70a936ebe1299fd',
+  '0x661ab2f856c9a858a7d125aa675eb3e1be57c831',
+  '0x672de64c5cf048498bbf4d11b32d2f96820a3cc0',
+  '0x8bbd71362da9284e0ee10c32b04edb0a22e2e5e7',
+  '0x39c185721fbe8b350363e6b49801305d32485a45',
+  '0x84315744d858cbefbd0f24748f61b4ce36c48962',
+  '0x7f57f6ad25c501deb2fcaca863264f593efe31d8',
+  '0x15630f70b116c0a0ed73e1d7233cedc94e926b49',
+  '0xda31f8955f9583fe9286f92f7e0ea2aff46e8d3f',
+  '0x24521902825ce358d53e1b778ee115c7082ff5ae',
+  '0x007ad63a0afd5b765d293c1de66fab979f7abc48',
+  '0x1dc79eb47a762d96889a777dc06634e4f4a7e326',
+  '0x60226baf4d3020f3714b30b8c1c690a48214734e',
+  '0x8232a31ee49009d4738c0f81211434bcf0a9bc95',
+  '0x19e74a36978a9a37bdbe08f4d8093c31d7c174ce',
+  '0xb13bfbba2e44c29f8ae80d095b1efe3621ef46ec',
+  '0xe8a7fe3b74b61642a938f217e8c117ff922d5e47',
+  '0xec2b230a4513668c7090c9242bd32e5507452175',
+  '0x7c680620a83bf08de3f37b4d3adbd92750792a0a',
+  '0xba22f00aa49ee33244ebc09649d355eab8b96501',
+  '0x299fffff0f64eaaea528a86e115051f77768b1f4',
+  '0x513b90cd5674d5b8c150ceadd752f8b2e358d615',
+  '0x4ae8c67f5be60e7b833d3cc1f954f0f3a8d5edca',
+  '0x240620002faebe1cc34ecbb918e1fe872682d1cb',
+  '0xfb0b85ff94497b3cd0eb478f63dae3598a87e7fb',
+  '0x8adf337c456d95b984373999dfd9e52e8d90f3ad',
+  '0x969fafa259f28d8a49d18a3e34dd372e24e17dd0',
+  '0x78bd96fbd3827e89591cfe7e8f1ea06f73c383ad',
+  '0xd8cc1d2da9ba559aff35b80813e9c5526a9caedf',
+  '0xf2325289c257139d5ad0e1529a391baac2b91e39'
+]
+🔄 Récupération des enregistrements existants...
+🔄 Tentative de mise à jour de 5446 records
+✅ 5446 enregistrements mis à jour
+✅ Synchronisation des balances terminée.
+
+[2025-03-28T22:15:01.640Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+

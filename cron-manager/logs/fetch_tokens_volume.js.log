@@ -1,0 +1,64 @@
+[2025-03-28T21:42:42.373Z] ========== DÉBUT DE L'EXÉCUTION MANUELLE DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-28T21:42:43.473Z] ========== DÉBUT DE L'EXÉCUTION MANUELLE DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-28T21:42:43.925Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-27
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6904 enregistrements existants récupérés
+Enregistrements existants récupérés
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-28T21:42:43.925Z] ========== FIN DE L'EXÉCUTION MANUELLE (STATUT: success) ==========
+
+[2025-03-28T21:42:45.046Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-27
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6904 enregistrements existants récupérés
+Enregistrements existants récupérés
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-28T21:42:45.046Z] ========== FIN DE L'EXÉCUTION MANUELLE (STATUT: success) ==========
+
+[2025-03-28T22:00:00.991Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-28T22:00:05.551Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-27
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6904 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x27c30545dc2ba4b3bfdcb9f807a0214f4b06f034_2025-03-28
+  Ancien: { quantity: 20, volume: 1036 }
+  Nouveau: { quantity: 20.6453, volume: 1068.6759 }
+❗ Différence détectée pour la clé 0x960e61f5c4107d71bd8936b010416738c250f91c_2025-03-28
+  Ancien: { quantity: 12.5691, volume: 691.3007 }
+  Nouveau: { quantity: 13.8461, volume: 760.1156 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-28T22:00:05.552Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-28T22:02:52.659Z] ========== DÉBUT DE L'EXÉCUTION MANUELLE DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-28T22:02:54.222Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-27
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6904 enregistrements existants récupérés
+Enregistrements existants récupérés
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-28T22:02:54.222Z] ========== FIN DE L'EXÉCUTION MANUELLE (STATUT: success) ==========
+

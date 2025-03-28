@@ -1,0 +1,61 @@
+<h1 class="mb-4">Nouvelle Tâche Cron</h1>
+
+<div class="card">
+  <div class="card-body">
+    <form action="/create" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom de la tâche</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="form-text">Donnez un nom descriptif à votre tâche</div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="script_path" class="form-label">Script à exécuter</label>
+        <select class="form-select" id="script_path" name="script_path" required>
+          <option value="" selected disabled>Sélectionnez un script</option>
+          <% if (scripts && scripts.length > 0) { %>
+            <% scripts.forEach(script => { %>
+              <option value="<%= script.path %>"><%= script.name %></option>
+            <% }); %>
+          <% } %>
+        </select>
+        <div class="form-text">
+          Sélectionnez le script Node.js à exécuter.
+          <% if (!scripts || scripts.length === 0) { %>
+            <span class="text-danger">Aucun script disponible. Veuillez ajouter des scripts JavaScript dans le répertoire /app/scripts.</span>
+          <% } %>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="cron_expression" class="form-label">Expression Cron</label>
+        <input type="text" class="form-control" id="cron_expression" name="cron_expression" 
+               placeholder="*/5 * * * *" required>
+        <div class="form-text">
+          Format: minute heure jour_du_mois mois jour_de_la_semaine<br>
+          Exemples:
+          <ul>
+            <li><code>*/5 * * * *</code> - Toutes les 5 minutes</li>
+            <li><code>0 * * * *</code> - Toutes les heures à la minute 0</li>
+            <li><code>0 0 * * *</code> - Tous les jours à minuit</li>
+            <li><code>0 12 * * 1-5</code> - Tous les jours de la semaine à midi</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="description" class="form-label">Description (optionnelle)</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      </div>
+      
+      <div class="d-flex">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-save"></i> Enregistrer
+        </button>
+        <a href="/" class="btn btn-secondary ms-2">
+          <i class="fas fa-arrow-left"></i> Annuler
+        </a>
+      </div>
+    </form>
+  </div>
+</div> 

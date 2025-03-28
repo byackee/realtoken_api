@@ -1,0 +1,148 @@
+<h1 class="mb-4">Logs de la tâche: <%= job.name %></h1>
+
+<div class="card mb-4">
+  <div class="card-header bg-light">
+    <div class="d-flex justify-content-between align-items-center">
+      <span>
+        <strong>Script:</strong> <code><%= job.script_path.split('/').pop() %></code>
+      </span>
+      <a href="/" class="btn btn-sm btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Retour à la liste
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header bg-dark text-white">
+    <div class="d-flex justify-content-between align-items-center">
+      <span>
+        <i class="fas fa-file-alt"></i> Logs d'exécution
+      </span>
+      <div class="d-flex align-items-center">
+        <div class="me-3">
+          <span id="timer-display" class="badge bg-secondary d-none">
+            <i class="fas fa-clock"></i> Actualisation dans <span id="countdown">0</span>s
+          </span>
+        </div>
+        <div class="btn-group me-2" role="group">
+          <button type="button" class="btn btn-sm btn-outline-light refresh-option" data-seconds="0">
+            <i class="fas fa-ban"></i> Off
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-light refresh-option" data-seconds="5">
+            5s
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-light refresh-option" data-seconds="15">
+            15s
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-light refresh-option" data-seconds="30">
+            30s
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-light refresh-option" data-seconds="60">
+            1min
+          </button>
+        </div>
+        <a href="/logs/<%= job.id %>" class="btn btn-sm btn-outline-light">
+          <i class="fas fa-sync"></i> Rafraîchir
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="logs-container bg-dark text-light p-3" style="max-height: 600px; overflow-y: auto; font-family: monospace; white-space: pre-wrap;">
+<%= logs %>
+    </div>
+  </div>
+  <div class="card-footer bg-light">
+    <div class="d-flex justify-content-between">
+      <div>
+        <a href="/" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Retour
+        </a>
+      </div>
+      <div>
+        Dernière exécution: <%= job.last_run ? new Date(job.last_run).toLocaleString('fr-FR') : 'Jamais' %>
+        <% if (job.last_status === 'success') { %>
+          <span class="badge bg-success"><i class="fas fa-check-circle"></i> Succès</span>
+        <% } else if (job.last_status === 'failed') { %>
+          <span class="badge bg-danger"><i class="fas fa-times-circle"></i> Échec</span>
+        <% } else { %>
+          <span class="badge bg-secondary">Inconnu</span>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Variables pour l'auto-refresh
+    let refreshInterval = null;
+    let countdownValue = 0;
+    let timerDisplay = document.getElementById('timer-display');
+    let countdownElement = document.getElementById('countdown');
+    
+    // Fonction de décompte
+    function updateCountdown() {
+      countdownValue--;
+      countdownElement.textContent = countdownValue;
+      
+      if (countdownValue <= 0) {
+        // Rediriger vers la même page pour rafraîchir
+        window.location.href = window.location.href;
+      }
+    }
+    
+    // Fonction pour démarrer l'auto-refresh
+    function startAutoRefresh(seconds) {
+      // Arrêter tout timer existant
+      stopAutoRefresh();
+      
+      // Si seconds est 0, désactiver l'auto-refresh
+      if (seconds === 0) {
+        timerDisplay.classList.add('d-none');
+        return;
+      }
+      
+      // Initialiser le décompte
+      countdownValue = seconds;
+      countdownElement.textContent = countdownValue;
+      timerDisplay.classList.remove('d-none');
+      
+      // Démarrer l'intervalle
+      refreshInterval = setInterval(updateCountdown, 1000);
+    }
+    
+    // Fonction pour arrêter l'auto-refresh
+    function stopAutoRefresh() {
+      if (refreshInterval) {
+        clearInterval(refreshInterval);
+        refreshInterval = null;
+      }
+    }
+    
+    // Gestion des boutons de rafraîchissement
+    const refreshButtons = document.querySelectorAll('.refresh-option');
+    refreshButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Supprimer la classe active de tous les boutons
+        refreshButtons.forEach(btn => btn.classList.remove('active', 'btn-light'));
+        
+        // Ajouter la classe active au bouton cliqué
+        this.classList.add('active', 'btn-light');
+        
+        // Récupérer la valeur en secondes
+        const seconds = parseInt(this.getAttribute('data-seconds'), 10);
+        
+        // Démarrer l'auto-refresh avec cette valeur
+        startAutoRefresh(seconds);
+      });
+    });
+    
+    // Activer le bouton "Off" par défaut
+    document.querySelector('.refresh-option[data-seconds="0"]').classList.add('active', 'btn-light');
+    
+    // Arrêter l'auto-refresh lorsque l'utilisateur quitte la page
+    window.addEventListener('beforeunload', stopAutoRefresh);
+  });
+</script> 

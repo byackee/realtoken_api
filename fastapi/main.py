@@ -47,6 +47,21 @@ from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
+# Configuration CORS
+origins = [
+    "https://realtoken-community.github.io",  # Domaine de ton frontend Flutter
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Autorise toutes les méthodes HTTP
+    allow_headers=["*"],  # Autorise tous les headers HTTP
+)
+
 # Configuration de slowapi
 limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter
@@ -55,22 +70,6 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # Configuration de Prometheus
 instrumentator = Instrumentator()
 instrumentator.instrument(app).expose(app)
-
-# ----------------------------
-# Variables de configuration NocoDB
-# ----------------------------
-NOCODB_URL = "http://postgres:8085"
-NOCODB_API_TOKEN = "TMdJ_qqTc3AmCvMY48UDVTCDtwe6ggvhjZHeS8C-"
-NOCODB_BASE_ID = "p4hbneg5dqfyhva"
-NOCODB_TABLE_REALTOKENS = "mbe7k6zo08c084w"
-NOCODB_TABLE_WALLETTOKENS = "m8xttp6pp5am2qm"
-NOCODB_TABLE_WALLETLIST = "mm61k3ah982a7tn"
-NOCODB_TABLE_EXECUTIONS = "mw1cd57391byn72"
-NOCODB_TOKENVOLUMES = "m93fvgd1k7eph0p"
-NOCODB_TABLE_YAMTRANSACTIONSHISTORY = "mxsqy3ll7qaymv0"
-NOCODB_TABLE_TRANSACTIONSHISTORY = "mv0ehz6k8hvixfr"
-NOCODB_TABLE_WALLETUSERID = "m5fclvebhy2qu5t"
-NOCODB_TABLE_LASTREFRESH = "mw1cd57391byn72"
 
 # ----------------------------
 # Chemins des scripts Node.js
