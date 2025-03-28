@@ -11,8 +11,6 @@ COPY update-geoip.sh /usr/local/bin/update-geoip.sh
 RUN chmod +x /usr/local/bin/update-geoip.sh
 
 # Variables d'environnement pour la configuration
-ENV MAXMIND_LICENSE_KEY="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"
-ENV MAXMIND_ACCOUNT_ID="1141003"
 ENV UPDATE_INTERVAL=7
 ENV GEOIP_DB_PATH=/usr/share/GeoIP
 

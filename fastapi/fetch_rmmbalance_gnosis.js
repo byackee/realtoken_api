@@ -1,6 +1,6 @@
+const { createPublicClient, http } = require('viem');
+const { gnosis } = require('viem/chains');
 const { Client } = require('pg');
-
-const GRAPHQL_ENDPOINT = "https://gateway-arbitrum.network.thegraph.com/api/c4a3fd07adb1e3307ca045f5881cbade/subgraphs/id/2dMMk7DbQYPX6Gi5siJm6EZ2gDQBF8nJcgKtpiPnPBsK";
 
 // Configuration PostgreSQL
 const pgClient = new Client({
@@ -10,6 +10,155 @@ const pgClient = new Client({
   database: "realtoken",
   port: 5432,
 });
+
+// Adresse du contrat RMM multicall
+const RMM_CONTRACT_ADDRESS = '0x10497611Ee6524D75FC45E3739F472F83e282AD5';
+
+// ABI pour la fonction getAllTokenBalancesOfUser (retourne [address[], uint256[]])
+const rmmAbi = [
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getAllTokenBalancesOfUser",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
+
+// ABI minimal pour récupérer les decimals d'un token
+const tokenAbi = [
+  {
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
+
+// Configuration des différents RPC pour Gnosis
+const RPC_ENDPOINTS = [
+  {
+    name: "Gnosis Gateway",
+    url: "https://rpc.gnosis.gateway.fm"
+  },
+  {
+    name: "Gnosis Public",
+    url: "https://rpc.gnosischain.com"
+  },
+  {
+    name: "Gnosis Ankr",
+    url: "https://rpc.ankr.com/gnosis"
+  },
+  {
+    name: "Blast API",
+    url: "https://gnosis-mainnet.blastapi.io/b5a775dda0c2e49494c8c6be42c025ec"
+  }
+];
+
+// Création d'un client de test pour vérifier les RPC
+let client = null;
+
+// Fonction utilitaire pour ajouter un délai
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// Fonction pour exécuter une opération avec un timeout
+const withTimeout = (promise, ms) => {
+  let timeoutId;
+  const timeoutPromise = new Promise((_, reject) => {
+    timeoutId = setTimeout(() => {
+      reject(new Error(`Opération annulée après ${ms}ms`));
+    }, ms);
+  });
+  return Promise.race([promise, timeoutPromise]).finally(() => clearTimeout(timeoutId));
+};
+
+// Fonction pour tester un RPC et créer un client fonctionnel
+async function setupWorkingRPCClient() {
+  console.log("🔍 Test des RPC Gnosis disponibles...");
+  
+  for (const rpc of RPC_ENDPOINTS) {
+    try {
+      console.log(`🔄 Test du RPC ${rpc.name} (${rpc.url})...`);
+      
+      const testClient = createPublicClient({
+        chain: gnosis,
+        transport: http(rpc.url, {
+          timeout: 5000,
+          retryCount: 1
+        })
+      });
+      
+      const blockNumber = await testClient.getBlockNumber();
+      console.log(`✅ RPC ${rpc.name} opérationnel (bloc actuel: ${blockNumber})`);
+      
+      client = createPublicClient({
+        chain: gnosis,
+        transport: http(rpc.url, {
+          timeout: 30000,
+          retryCount: 3,
+          retryDelay: 1000
+        })
+      });
+      
+      return true;
+    } catch (err) {
+      console.warn(`⚠️ RPC ${rpc.name} non disponible: ${err.message}`);
+    }
+  }
+  
+  console.error("❌ Aucun RPC disponible! Impossible de continuer.");
+  return false;
+}
+
+// Cache pour les decimals des tokens
+const tokenDecimalsCache = new Map();
+
+// Récupérer les decimals d'un token
+async function getTokenDecimals(tokenAddress) {
+  if (tokenDecimalsCache.has(tokenAddress)) {
+    return tokenDecimalsCache.get(tokenAddress);
+  }
+  
+  try {
+    const decimals = await client.readContract({
+      address: tokenAddress,
+      abi: tokenAbi,
+      functionName: 'decimals'
+    });
+    
+    console.log(`ℹ️ Token ${tokenAddress}: decimals = ${decimals}`);
+    tokenDecimalsCache.set(tokenAddress, Number(decimals));
+    return Number(decimals);
+  } catch (err) {
+    console.warn(`⚠️ Impossible de récupérer les decimals pour ${tokenAddress}, utilisation de 18 par défaut`);
+    tokenDecimalsCache.set(tokenAddress, 18);
+    return 18;
+  }
+}
 
 // Connexion à PostgreSQL
 async function connectToDB() {
@@ -45,313 +194,72 @@ async function getWallets() {
   }
 }
 
-// Requête GraphQL pour récupérer les balances d'un wallet
-async function queryGraphForBatch(addressBatch) {
-  try {
-    console.log(`📡 Interrogation de TheGraph pour ${addressBatch.length} adresses`);
-    
-    const query = `
-      query RmmQuery($addressList: [String!]!) {
-        users(where: { id_in: $addressList }) {
-          id
-          balances(
-            where: { amount_gt: "0" }
-            first: 1000
-            orderBy: amount
-            orderDirection: desc
-            skip: 0
-          ) {
-            amount
-            token {
-              decimals
-              id
-            }
-          }
-        }
-      }
-    `;
-
-    const response = await fetch(GRAPHQL_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        query, 
-        variables: { addressList: addressBatch.map(addr => addr.toLowerCase()) } 
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`❌ Erreur HTTP GraphQL: ${response.status} - ${await response.text()}`);
-    }
-
-    const responseData = await response.json();
-
-    if (!responseData || !responseData.data) {
-      console.error(`❌ Réponse invalide de TheGraph:`, responseData);
-      return [];
-    }
-
-    const users = responseData.data.users;
-    if (!users || users.length === 0) {
-      console.warn(`⚠️ Aucun utilisateur trouvé pour ${addressBatch}`);
-      return [];
-    }
-
-    console.log(`✅ ${users.length} utilisateurs trouvés.`);
-    return users;
-  } catch (err) {
-    console.error("❌ Erreur dans la requête GraphQL:", err);
-    return [];
-  }
-}
-
-// Synchronisation des balances
-async function syncBalancesForUsers(users) {
-  const newRecordsMap = new Map();
-  const activeWalletTokens = new Set();
-
-  if (!users || users.length === 0) {
-    console.warn("⚠️ Aucun utilisateur trouvé dans la réponse GraphQL.");
-    return;
-  }
-
-  for (const user of users) {
-    if (!user || !user.id) {
-      console.warn(`⚠️ Utilisateur invalide reçu:`, user);
-      continue;
-    }
-
-    const wallet = user.id.toLowerCase();
-
-    if (!user.balances || user.balances.length === 0) {
-      console.warn(`⚠️ Aucun solde trouvé pour l'utilisateur ${wallet}`);
-      continue;
-    }
-
-    for (const balance of user.balances) {
-      if (!balance.token || !balance.token.id) {
-        console.warn(`⚠️ Balance invalide reçue:`, balance);
-        continue;
-      }
-
-      const token = balance.token.id.toLowerCase();
-      const decimals = balance.token.decimals || 18;
-      const amount = parseFloat(balance.amount) / Math.pow(10, decimals);
-      const type = "RMM";
-
-      const key = `${wallet}_${token}_${amount}_${type}`;
-      newRecordsMap.set(key, { wallet, token, amount, type });
-      activeWalletTokens.add(`${wallet}_${token}`);
-    }
-  }
-
-  const existingRecordsMap = await getExistingBalances();
-  const recordsToUpdate = [];
-  const recordsToInsert = [];
-  const recordsToDelete = [];
-
-  // Traiter les nouveaux enregistrements et les mises à jour
-  for (const [key, newRecord] of newRecordsMap) {
-    const walletTokenKey = `${newRecord.wallet}_${newRecord.token}`;
-    
-    // Chercher un enregistrement existant avec le même couple wallet_token
-    let existingRecord = null;
-    for (const [existingKey, record] of existingRecordsMap) {
-      if (record.wallet === newRecord.wallet && record.token === newRecord.token) {
-        existingRecord = record;
-        existingRecordsMap.delete(existingKey);
-        break;
-      }
-    }
-
-    if (existingRecord) {
-      // Mettre à jour l'enregistrement existant
-      recordsToUpdate.push({ id: existingRecord.id, ...newRecord });
-    } else {
-      // Insérer un nouvel enregistrement
-      recordsToInsert.push(newRecord);
-    }
-  }
-
-  // Supprimer uniquement les enregistrements qui n'existent plus dans TheGraph
-  for (const [key, rec] of existingRecordsMap) {
-    const walletTokenKey = `${rec.wallet}_${rec.token}`;
-    if (rec.type === "RMM" && !activeWalletTokens.has(walletTokenKey)) {
-      recordsToDelete.push(rec.id);
-    }
-  }
-
-  if (recordsToUpdate.length) await updateBalanceRecords(recordsToUpdate);
-  if (recordsToInsert.length) await insertBalanceRecords(recordsToInsert);
-  if (recordsToDelete.length) await deleteBalanceRecords(recordsToDelete);
-}
-
-// Récupération des balances existantes
-async function getExistingBalances() {
-  const existingRecordsMap = new Map();
-  try {
-    console.log("🔄 Récupération des enregistrements existants...");
-
-    const query = `
-      SELECT id, lower(wallet) as wallet, lower(token) as token, amount, type
-      FROM token_balances
-      WHERE wallet IS NOT NULL AND token IS NOT NULL
-    `;
-
-    const result = await pgClient.query(query);
-    
-    for (const rec of result.rows) {
-      const key = `${rec.wallet}_${rec.token}_${rec.amount}_${rec.type}`;
-      existingRecordsMap.set(key, rec);
-    }
-  } catch (err) {
-    console.error("❌ Erreur lors de la récupération des balances existantes:", err);
-  }
-
-  return existingRecordsMap;
-}
-
-// Mise à jour des enregistrements existants
-async function updateBalanceRecords(records) {
-  try {
-    if (records.length === 0) {
-      console.warn("⚠️ Aucun enregistrement à mettre à jour.");
-      return;
-    }
-
-    console.log(`🔄 Tentative de mise à jour de ${records.length} records`);
-
-    // Créer une table temporaire pour les mises à jour
-    await pgClient.query(`
-      CREATE TEMP TABLE temp_balances (
-        id int,
-        wallet varchar(255),
-        token varchar(255),
-        amount decimal(12,4),
-        type varchar(255)
-      )
-    `);
-
-    // Insérer les données dans la table temporaire
-    const insertTempQuery = `
-      INSERT INTO temp_balances 
-      VALUES ${records.map((_, i) => 
-        `($${i * 5 + 1}, $${i * 5 + 2}, $${i * 5 + 3}, $${i * 5 + 4}, $${i * 5 + 5})`
-      ).join(', ')}
-    `;
-    
-    await pgClient.query(insertTempQuery, records.flatMap(r => [
-      r.id,
-      r.wallet,
-      r.token,
-      r.amount,
-      r.type
-    ]));
-
-    // Mettre à jour les enregistrements
-    const updateQuery = `
-      UPDATE token_balances b
-      SET 
-        wallet = t.wallet,
-        token = t.token,
-        amount = t.amount,
-        type = t.type
-      FROM temp_balances t
-      WHERE b.id = t.id
-    `;
-
-    const result = await pgClient.query(updateQuery);
-    console.log(`✅ ${result.rowCount} enregistrements mis à jour`);
-
-    // Nettoyer la table temporaire
-    await pgClient.query('DROP TABLE temp_balances');
-  } catch (err) {
-    console.error("❌ Erreur lors de la mise à jour des records:", err);
-    await pgClient.query('DROP TABLE IF EXISTS temp_balances');
-  }
-}
-
-// Insertion de nouveaux enregistrements
-async function insertBalanceRecords(records) {
-  try {
-    const insertQuery = `
-      INSERT INTO token_balances (wallet, token, amount, type)
-      VALUES ${records.map((_, i) => 
-        `($${i * 4 + 1}, $${i * 4 + 2}, $${i * 4 + 3}, $${i * 4 + 4})`
-      ).join(', ')}
-    `;
-
-    const values = records.flatMap(r => [
-      r.wallet,
-      r.token,
-      r.amount,
-      r.type
-    ]);
-
-    const result = await pgClient.query(insertQuery, values);
-    console.log(`✅ ${result.rowCount} enregistrements insérés`);
-  } catch (err) {
-    console.error("❌ Erreur lors de l'insertion des records:", err);
-  }
-}
-
-// Mise à jour des enregistrements obsolètes (au lieu de les supprimer)
-async function deactivateBalanceRecords(records) {
-  try {
-    if (!records.length) {
-      console.warn("⚠️ Aucun record à désactiver.");
-      return;
-    }
-
-    console.log(`🔄 Désactivation de ${records.length} records...`);
-
-    // Créer une table temporaire pour les mises à jour
-    await pgClient.query(`
-      CREATE TEMP TABLE temp_balances (
-        id int,
-        amount decimal(12,4)
-      )
-    `);
-
-    // Insérer les données dans la table temporaire
-    const insertTempQuery = `
-      INSERT INTO temp_balances 
-      VALUES ${records.map((_, i) => 
-        `($${i * 2 + 1}, $${i * 2 + 2})`
-      ).join(', ')}
-    `;
-    
-    await pgClient.query(insertTempQuery, records.flatMap(r => [
-      r.id,
-      r.amount
-    ]));
-
-    // Mettre à jour les enregistrements
-    const updateQuery = `
-      UPDATE token_balances b
-      SET amount = t.amount
-      FROM temp_balances t
-      WHERE b.id = t.id
-    `;
-
-    const result = await pgClient.query(updateQuery);
-    console.log(`✅ ${result.rowCount} enregistrements désactivés`);
-
-    // Nettoyer la table temporaire
-    await pgClient.query('DROP TABLE temp_balances');
-  } catch (err) {
-    console.error("❌ Erreur lors de la désactivation des records:", err);
-    await pgClient.query('DROP TABLE IF EXISTS temp_balances');
-  }
-}
-
-// Découpe un tableau en lots de taille spécifiée
+// Découpe un tableau en lots
 function batchArray(arr, batchSize) {
   const batches = [];
   for (let i = 0; i < arr.length; i += batchSize) {
     batches.push(arr.slice(i, i + batchSize));
   }
   return batches;
+}
+
+// Récupérer les balances RMM pour un wallet en écartant les tokens spéciaux
+// et en ne traitant pas ceux dont la balance est trop élevée (normalisée à 1)
+async function getRMMBalancesForWallet(walletAddress) {
+  try {
+    console.log(`📡 Récupération des balances RMM pour ${walletAddress}...`);
+    
+    const result = await client.readContract({
+      address: RMM_CONTRACT_ADDRESS,
+      abi: rmmAbi,
+      functionName: 'getAllTokenBalancesOfUser',
+      args: [walletAddress]
+    });
+    
+    const tokens = result[0];
+    const balances = result[1];
+    
+    if (!tokens || tokens.length === 0) {
+      console.log(`ℹ️ Aucune balance RMM trouvée pour ${walletAddress}`);
+      return [];
+    }
+    
+    console.log(`✅ ${tokens.length} balances RMM trouvées pour ${walletAddress}`);
+    
+    const processedBalances = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const tokenAddress = tokens[i];
+      const rawBalance = balances[i];
+      
+      // Écarter les tokens "spéciaux"
+      if (tokenAddress.startsWith('0x000000000')) continue;
+      
+      if (rawBalance > 0n) {
+        const rawBalanceStr = rawBalance.toString();
+        
+        // Écarter si la balance est trop élevée (pour éviter un montant normalisé à 1)
+        if (rawBalanceStr.length > 30) continue;
+        
+        const amount = Number(rawBalance) / 1e18;
+        if (!isFinite(amount) || amount < 0) continue;
+        
+        processedBalances.push({
+          wallet: walletAddress,
+          token: tokenAddress,
+          amount_text: rawBalanceStr,
+          amount: amount,
+          is_special_address: false,
+          type: 'RMM'
+        });
+      }
+    }
+    
+    return processedBalances;
+  } catch (err) {
+    console.error(`❌ Erreur lors de la récupération des balances RMM pour ${walletAddress}:`, err.message);
+    console.error(`  - Détails: ${err.stack}`);
+    return [];
+  }
 }
 
 // Met à jour le champ système "updated_at" pour tous les wallets récupérés
@@ -361,7 +269,6 @@ async function updateWalletsUpdatedAt(wallets) {
   try {
     console.log(`🔄 Mise à jour du champ "updated_at" pour ${wallets.length} wallets...`);
 
-    // Créer une table temporaire pour les mises à jour
     await pgClient.query(`
       CREATE TEMP TABLE temp_wallets (
         id int,
@@ -369,7 +276,6 @@ async function updateWalletsUpdatedAt(wallets) {
       )
     `);
 
-    // Insérer les données dans la table temporaire
     const insertTempQuery = `
       INSERT INTO temp_wallets (id)
       VALUES ${wallets.map((_, i) => `($${i + 1})`).join(', ')}
@@ -377,7 +283,6 @@ async function updateWalletsUpdatedAt(wallets) {
     
     await pgClient.query(insertTempQuery, wallets.map(w => w.id));
 
-    // Mettre à jour les enregistrements
     const updateQuery = `
       UPDATE address_list a
       SET updated_at = t.updated_at
@@ -388,7 +293,6 @@ async function updateWalletsUpdatedAt(wallets) {
     const result = await pgClient.query(updateQuery);
     console.log(`✅ ${result.rowCount} wallets mis à jour`);
 
-    // Nettoyer la table temporaire
     await pgClient.query('DROP TABLE temp_wallets');
   } catch (err) {
     console.error("❌ Erreur lors de la mise à jour d'updated_at:", err);
@@ -396,19 +300,184 @@ async function updateWalletsUpdatedAt(wallets) {
   }
 }
 
-// Fonction principale
-async function syncWalletBalances() {
-  await connectToDB();
-  const wallets = await getWallets();
-  if (!wallets.length) return;
-
-  for (const batch of batchArray(wallets.map(w => w.address), 100)) {
-    const users = await queryGraphForBatch(batch);
-    if (users.length) await syncBalancesForUsers(users);
+// Stocker les balances dans la base de données
+async function storeBalances(records) {
+  if (records.length === 0) {
+    console.log("🚀 Aucune balance à stocker.");
+    return;
   }
 
-  console.log("✅ Synchronisation des balances terminée.");
-  await pgClient.end();
+  try {
+    const uniqueWallets = [...new Set(records.map(r => r.wallet.toLowerCase()))];
+    console.log(`📊 Traitement de ${records.length} balances pour ${uniqueWallets.length} wallets uniques.`);
+    
+    try {
+      await pgClient.query(`
+        DO $$
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns
+            WHERE table_name = 'token_balances' AND column_name = 'amount_text'
+          ) THEN
+            ALTER TABLE token_balances ADD COLUMN amount_text TEXT;
+          END IF;
+          
+          IF NOT EXISTS (
+            SELECT 1 FROM information_schema.columns
+            WHERE table_name = 'token_balances' AND column_name = 'is_special_address'
+          ) THEN
+            ALTER TABLE token_balances ADD COLUMN is_special_address BOOLEAN DEFAULT FALSE;
+          END IF;
+        END $$;
+      `);
+      console.log("✅ Vérification/création des colonnes supplémentaires effectuée.");
+    } catch (err) {
+      console.warn("⚠️ Erreur lors de la vérification/création des colonnes:", err.message);
+    }
+    
+    if (uniqueWallets.length > 0) {
+      console.log(`🗑️ Suppression des anciens enregistrements RMM pour ${uniqueWallets.length} wallets...`);
+      const params = uniqueWallets.map((_, idx) => `$${idx + 1}`).join(',');
+      const deleteQuery = `
+        DELETE FROM token_balances
+        WHERE LOWER(wallet) IN (${params})
+        AND type = 'RMM'
+      `;
+      
+      const deleteResult = await pgClient.query(deleteQuery, uniqueWallets);
+      console.log(`✅ ${deleteResult.rowCount} anciens enregistrements supprimés.`);
+    }
+    
+    if (records.length > 0) {
+      console.log(`➕ Insertion de ${records.length} nouveaux enregistrements RMM...`);
+      
+      const validRecords = records.filter(r => {
+        if (isNaN(r.amount) || !isFinite(r.amount)) {
+          console.warn(`⚠️ Valeur ignorée (non numérique): wallet=${r.wallet}, token=${r.token}, amount=${r.amount}`);
+          return false;
+        }
+        if (r.amount < 0) {
+          console.warn(`⚠️ Valeur ignorée (négative): wallet=${r.wallet}, token=${r.token}, amount=${r.amount}`);
+          return false;
+        }
+        return true;
+      });
+      
+      console.log(`📊 ${validRecords.length}/${records.length} enregistrements valides.`);
+      
+      const BATCH_SIZE = 25;
+      for (let i = 0; i < validRecords.length; i += BATCH_SIZE) {
+        const batch = validRecords.slice(i, i + BATCH_SIZE);
+        
+        const insertQuery = `
+          INSERT INTO token_balances (wallet, token, amount, amount_text, is_special_address, type)
+          VALUES ${batch.map((_, idx) => 
+            `($${idx * 6 + 1}, $${idx * 6 + 2}, $${idx * 6 + 3}, $${idx * 6 + 4}, $${idx * 6 + 5}, $${idx * 6 + 6})`
+          ).join(', ')}
+        `;
+        
+        const values = batch.flatMap(r => [
+          r.wallet.toLowerCase(),
+          r.token,
+          r.amount,
+          r.amount_text,
+          r.is_special_address || false,
+          'RMM'
+        ]);
+        
+        try {
+          const insertResult = await pgClient.query(insertQuery, values);
+          console.log(`✅ Lot ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(validRecords.length / BATCH_SIZE)}: ${insertResult.rowCount} enregistrements insérés.`);
+        } catch (err) {
+          console.error(`❌ Erreur d'insertion du lot ${Math.floor(i / BATCH_SIZE) + 1}:`, err.message);
+          console.log("Tentative d'insertion enregistrement par enregistrement...");
+          
+          let successCount = 0;
+          let failureCount = 0;
+          for (let j = 0; j < batch.length; j++) {
+            try {
+              const record = batch[j];
+              const singleInsertQuery = `
+                INSERT INTO token_balances (wallet, token, amount, amount_text, is_special_address, type)
+                VALUES ($1, $2, $3, $4, $5, $6)
+              `;
+              await pgClient.query(singleInsertQuery, [
+                record.wallet.toLowerCase(),
+                record.token,
+                record.amount,
+                record.amount_text,
+                record.is_special_address || false,
+                'RMM'
+              ]);
+              successCount++;
+            } catch (singleErr) {
+              console.error(`  - Erreur sur l'enregistrement ${j}:`, singleErr.message);
+              failureCount++;
+            }
+          }
+          console.log(`  - Insertions individuelles: ${successCount} réussies, ${failureCount} échouées`);
+        }
+      }
+    }
+    
+    console.log(`✅ Synchronisation RMM terminée avec succès: ${records.length} balances mises à jour.`);
+  } catch (err) {
+    console.error("❌ Erreur lors du stockage des balances RMM:", err.message);
+    console.error("Stack trace:", err.stack);
+  }
 }
 
-syncWalletBalances();
+// Fonction principale
+async function syncRMMBalances() {
+  try {
+    console.log("🚀 Démarrage du script RMM...");
+    
+    const rpcReady = await setupWorkingRPCClient();
+    if (!rpcReady) {
+      console.error("❌ Impossible de continuer sans RPC fonctionnel.");
+      return;
+    }
+    
+    await connectToDB();
+    const wallets = await getWallets();
+    
+    if (!wallets.length) {
+      console.warn("⚠️ Aucun wallet trouvé, arrêt du script.");
+      return;
+    }
+    
+    const WALLET_BATCH_SIZE = 10;
+    const allBalances = [];
+    
+    for (const batch of batchArray(wallets, WALLET_BATCH_SIZE)) {
+      console.log(`🔍 Traitement du lot de ${batch.length} wallets...`);
+      
+      const batchPromises = batch.map(async (wallet) => {
+        const balances = await getRMMBalancesForWallet(wallet.address);
+        return balances;
+      });
+      
+      const batchResults = await Promise.all(batchPromises);
+      const flattenedResults = batchResults.flat();
+      allBalances.push(...flattenedResults);
+      console.log(`📊 Total de balances RMM trouvées jusqu'à présent: ${allBalances.length}`);
+      
+      await delay(1000);
+    }
+    
+    if (allBalances.length > 0) {
+      await storeBalances(allBalances);
+    } else {
+      console.log("ℹ️ Aucune balance RMM trouvée pour tous les wallets.");
+    }
+    
+    console.log("✅ Synchronisation des balances RMM terminée.");
+  } catch (err) {
+    console.error("❌ Erreur dans le script RMM:", err.message);
+    console.error('Stack trace:', err.stack);
+  } finally {
+    await pgClient.end();
+  }
+}
+
+syncRMMBalances();

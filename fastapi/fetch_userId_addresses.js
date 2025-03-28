@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 // Définition de l'URL de l'API GraphQL
-const GRAPHQL_ENDPOINT = "https://gateway-arbitrum.network.thegraph.com/api/c4a3fd07adb1e3307ca045f5881cbade/subgraphs/id/FPPoFB7S2dcCNrRyjM5QbaMwKqRZPdbTg8ysBrwXd4SP";
+const GRAPHQL_ENDPOINT = "https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/FPPoFB7S2dcCNrRyjM5QbaMwKqRZPdbTg8ysBrwXd4SP";
 
 /**
  * Récupère le userId associé à une adresse depuis TheGraph

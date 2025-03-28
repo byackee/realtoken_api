@@ -7,3 +7,4 @@ fastapi/env.development.local
 fastapi/env.test.local
 fastapi/env.production.local
 nocodb/data
+._*
