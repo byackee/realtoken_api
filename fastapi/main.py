@@ -52,11 +52,14 @@ from fastapi.middleware.cors import CORSMiddleware
 # Configuration CORS
 origins = [
     "https://realtoken-community.github.io",  # Domaine de ton frontend Flutter
+    "http://localhost:*",  # Tous les ports de localhost pour le développement
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins if "http://localhost:*" not in origins else [
+        origin for origin in origins if origin != "http://localhost:*"
+    ] + ["http://localhost:" + str(port) for port in range(1024, 65536)],
     allow_credentials=True,
     allow_methods=["*"],  # Autorise toutes les méthodes HTTP
     allow_headers=["*"],  # Autorise tous les headers HTTP
@@ -608,7 +611,7 @@ async def ensure_wallet_exists_and_sync(wallet_address: str, script_type: str = 
 # Endpoints de l'API
 # ------------------------------------------------------------------------------
 
-@app.get("/")
+@app.get("/" , include_in_schema=False)
 @limiter.limit("10/minute")
 async def root(request: Request):
     return {"message": "Bienvenue sur l'API FastAPI avec NocoDB"}
@@ -874,7 +877,7 @@ async def last_refresh(request: Request):
     finally:
         await conn.close()
 
-@app.get("/ip_geolocation")
+@app.get("/ip_geolocation" , include_in_schema=False)
 @limiter.limit("5/minute")
 async def get_ip_geolocation_data(request: Request, limit: int = 1000):
     try:
@@ -906,7 +909,7 @@ async def get_ip_geolocation_data(request: Request, limit: int = 1000):
     finally:
         await conn.close()
 
-@app.get("/ip_geolocation_stats")
+@app.get("/ip_geolocation_stats" , include_in_schema=False)
 @limiter.limit("5/minute")
 async def get_ip_geolocation_stats(request: Request):
     try:
@@ -959,7 +962,7 @@ async def get_ip_geolocation_stats(request: Request):
     finally:
         await conn.close()
 
-@app.get("/admin/clean_metrics_geolocation")
+@app.get("/admin/clean_metrics_geolocation" , include_in_schema=False)
 @limiter.limit("5/minute")
 async def clean_metrics_geolocation(request: Request):
     """

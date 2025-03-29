@@ -18,6 +18,35 @@ services:
       timeout: 5s
       retries: 5
 
+  gnosis-node:
+    image: nethermind/nethermind:latest
+    container_name: gnosis-rpc
+    restart: unless-stopped
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+      - "30303:30303/udp"
+    volumes:
+      - /mnt/user/appdata/API/gnosis_rpc:/data
+    command: >
+      --config=gnosis
+      --JsonRpc.Enabled=true
+      --JsonRpc.Host=0.0.0.0
+      --JsonRpc.Port=8545
+      --JsonRpc.EnabledModules=["eth","net","web3","txpool"]
+      --Sync.FastSync=true
+      --Merge.Enabled=false
+      --Init.IsMining=false
+      --Init.DiagnosticMode=None
+      --datadir=/data
+      --Network.Bootnodes="enode://54a7e6c8e974db0b6f0eb8ea1b12b8fca2f622b0b1c3a28b0ec2d1684414ac4b49cf11caa08d97ac933e0f015e8c1143a5c5409c4a291be58e4d1084324d68d@13.93.211.84:30303,enode://297d2b00f5a784d59c5d3b5ac0b6df7158cc53a254c80df8a5f3dcdd3c6bca4d0f0af3a7bde0d8b47a7f61ebd50e06c2f1a234567890abcdef@18.194.206.129:30303"
+
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8545"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   nocodb:
     image: nocodb/nocodb:latest
     ports:
@@ -127,3 +156,4 @@ services:
 volumes:
   grafana_data:
   geoip_data:
+  gnosis_data:

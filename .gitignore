@@ -8,3 +8,6 @@ fastapi/env.test.local
 fastapi/env.production.local
 nocodb/data
 ._*
+*.log
+*.log
+/gnosis_rpc
