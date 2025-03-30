@@ -1402,3 +1402,1435 @@ Enregistrements existants récupérés
 
 [2025-03-29T20:00:04.578Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
 
+[2025-03-29T21:00:00.627Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-29T21:00:03.334Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-28
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6952 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x0675e8f4a52ea6c845cb6427af03616a2af42170_2025-03-29
+  Ancien: { quantity: 58, volume: 2609.99 }
+  Nouveau: { quantity: 59, volume: 2654.98 }
+❗ Différence détectée pour la clé 0x0f388d7e65a969dbcbfab21bc3ab6629af78f4cf_2025-03-29
+  Ancien: { quantity: 3, volume: 151.53 }
+  Nouveau: { quantity: 28, volume: 1414.28 }
+❗ Différence détectée pour la clé 0x251abd48443cd84b87b92d26dc09d671773959eb_2025-03-29
+  Ancien: { quantity: 19.4, volume: 998.906 }
+  Nouveau: { quantity: 20.4, volume: 1051.406 }
+❗ Différence détectée pour la clé 0x3b734947a4ec3f42b354d5c352490e00828872f0_2025-03-29
+  Ancien: { quantity: 10.4252, volume: 533.907 }
+  Nouveau: { quantity: 19.4252, volume: 992.277 }
+❗ Différence détectée pour la clé 0x3b8b38475f011f4180374efe21a1b3b01c7f3f49_2025-03-29
+  Ancien: { quantity: 3.207, volume: 163.1728 }
+  Nouveau: { quantity: 7.207, volume: 366.4528 }
+❗ Différence détectée pour la clé 0x543eb06a961f042a7189e24ec8ab2db9cd313fc6_2025-03-29
+  Ancien: { quantity: 1, volume: 50.16 }
+  Nouveau: { quantity: 2, volume: 100.32 }
+❗ Différence détectée pour la clé 0x5c4e3fa9704d4212c6434190af6379cfbda47e13_2025-03-29
+  Ancien: { quantity: 0, volume: 0 }
+  Nouveau: { quantity: 9, volume: 451.8 }
+❗ Différence détectée pour la clé 0x854a0cfa24012937d3d15682ecc3d5b474bfa97e_2025-03-29
+  Ancien: { quantity: 8, volume: 404.08 }
+  Nouveau: { quantity: 15, volume: 757.65 }
+❗ Différence détectée pour la clé 0xad010246ecc63d57797217fc3bc3b76e35c07cf3_2025-03-29
+  Ancien: { quantity: 2.1, volume: 107.436 }
+  Nouveau: { quantity: 14, volume: 709.576 }
+🔄 Mise à jour de 9 enregistrements...
+✅ 9 enregistrements mis à jour avec succès
+📝 Insertion de 11 nouveaux enregistrements...
+✅ 11 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-29T21:00:03.334Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T00:00:00.929Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T00:00:09.466Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6963 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x1c1d58031fb0692577b4fb8fc71e333755ca6927_2025-03-29
+  Ancien: { quantity: 5, volume: 252.45 }
+  Nouveau: { quantity: 6, volume: 306.45 }
+❗ Différence détectée pour la clé 0x1e001730a23c7ebaff35bc8bc90da5a9b20804a4_2025-03-29
+  Ancien: { quantity: 0.0037, volume: 0.2513 }
+  Nouveau: { quantity: 0.0037, volume: 0.2514 }
+❗ Différence détectée pour la clé 0x24e1aaae80a826b5872ae405099622d792258471_2025-03-29
+  Ancien: { quantity: 6, volume: 304.98 }
+  Nouveau: { quantity: 11, volume: 559.13 }
+❗ Différence détectée pour la clé 0x251abd48443cd84b87b92d26dc09d671773959eb_2025-03-29
+  Ancien: { quantity: 20.4, volume: 1051.406 }
+  Nouveau: { quantity: 22.3039, volume: 1152.2937 }
+❗ Différence détectée pour la clé 0x340e5fd88575ee1466a7430e11b2e78150d2f476_2025-03-29
+  Ancien: { quantity: 0.072, volume: 3.7458 }
+  Nouveau: { quantity: 0.122, volume: 6.3408 }
+❗ Différence détectée pour la clé 0x3b734947a4ec3f42b354d5c352490e00828872f0_2025-03-29
+  Ancien: { quantity: 19.4252, volume: 992.277 }
+  Nouveau: { quantity: 21.4252, volume: 1094.137 }
+❗ Différence détectée pour la clé 0x3b8b38475f011f4180374efe21a1b3b01c7f3f49_2025-03-29
+  Ancien: { quantity: 7.207, volume: 366.4528 }
+  Nouveau: { quantity: 7.2493, volume: 368.6418 }
+❗ Différence détectée pour la clé 0x5c4e3fa9704d4212c6434190af6379cfbda47e13_2025-03-29
+  Ancien: { quantity: 9, volume: 451.8 }
+  Nouveau: { quantity: 10, volume: 502 }
+❗ Différence détectée pour la clé 0x73caeb94bf5ec8c10f4dea0c65a904bd314b1f8f_2025-03-29
+  Ancien: { quantity: 0.1037, volume: 5.4868 }
+  Nouveau: { quantity: 0.5037, volume: 26.7708 }
+❗ Différence détectée pour la clé 0x8c60eccab34ffce7b54e985fc8b7ba280b45701d_2025-03-29
+  Ancien: { quantity: 56.91, volume: 2916.6375 }
+  Nouveau: { quantity: 57.91, volume: 2969.1375 }
+❗ Différence détectée pour la clé 0x8e03c1e3dc348bb3af4df618bdd1b2eec0b2ca45_2025-03-29
+  Ancien: { quantity: 8.1781, volume: 409.3156 }
+  Nouveau: { quantity: 9.1781, volume: 459.3656 }
+❗ Différence détectée pour la clé 0xb2960e73b260812e4326723c7136e7b1988a036a_2025-03-29
+  Ancien: { quantity: 0.9264, volume: 48.9349 }
+  Nouveau: { quantity: 0.9823, volume: 51.8429 }
+❗ Différence détectée pour la clé 0xdaf6b273691372e4eb2fe353624f8f4f768c2099_2025-03-29
+  Ancien: { quantity: 2.9757, volume: 156.6554 }
+  Nouveau: { quantity: 3.0757, volume: 162.1554 }
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2,
+  token: '0x009bab289f104699ae87e576294d18ed505faa61',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0400',
+  volume: '2.5600',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 19,
+  token: '0x016e0081fcaad345691027908d5044534bca1946',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1000',
+  volume: '6.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 28,
+  token: '0x01b4ea64e4204b51cbc8463ffc8e6046c9d70371',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0400',
+  volume: '2.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 42,
+  token: '0x021bb23a45e9fc824260435e670fc383b7b8cbbb',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0100',
+  volume: '2.3355',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 65,
+  token: '0x02b5d51e29fa35c9228cfa3ff968da6aaf1048dd',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0400',
+  volume: '2.9400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 87,
+  token: '0x034ecb6dc0608b73765f2965771a003d940ee8b2',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0600',
+  volume: '3.5400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 123,
+  token: '0x03d23c82f20c96c421742b243b7ea33a3e217c1f',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1371',
+  volume: '8.2256',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 140,
+  token: '0x041cc71b3bce05d06179f05ef7a9a20bd0815515',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0600',
+  volume: '3.1800',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 254,
+  token: '0x0675e8f4a52ea6c845cb6427af03616a2af42170',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0100',
+  volume: '0.4790',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 315,
+  token: '0x076c82295af54a4507fa80c73a928c5703b845ee',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '102.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 324,
+  token: '0x07da3cdae2396aa826387a48deba5868d7deb7bc',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '94.0000',
+  volume: '4829.0900',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 463,
+  token: '0x0d5d0b74c690170a82bf52e5d16388fc4fa29082',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '176.7810',
+  volume: '9281.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 519,
+  token: '0x0f388d7e65a969dbcbfab21bc3ab6629af78f4cf',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '87.0000',
+  volume: '4437.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 563,
+  token: '0x106d6a8e73b851f0905eb592df5d5f9b29469a5e',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.4000',
+  volume: '20.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 621,
+  token: '0x1106d8755ffafb1f1820b3668e354336d9085a12',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '56.0500',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 633,
+  token: '0x1117ee7306c82190109869a1721021b96d6a249d',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '104.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 696,
+  token: '0x14b0d23238c5277f8243d2739c005480d8022fe0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '507.1000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 806,
+  token: '0x185e39d860cf86fbecf4a7c341bd1545ea3a41b9',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.8000',
+  volume: '52.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 827,
+  token: '0x18c523f27b0310a7468f081ae8e84179d0a04ad1',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '12.0000',
+  volume: '626.5200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 846,
+  token: '0x18e55343ecfc135e21916fcdb9788accb5b53caf',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.8000',
+  volume: '52.7680',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 861,
+  token: '0x19d01c13e6e5a1a990db9821358a591583f63234',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0900',
+  volume: '4.8375',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 890,
+  token: '0x19f824662ba9df78e368022f085b708fccc201c8',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.2000',
+  volume: '60.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 991,
+  token: '0x1d315b60ede11012ff8c980acd7cad65ac7ebdee',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1000',
+  volume: '5.2000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1018,
+  token: '0x1d9fd5c3fbfd4758f22438a336068b813872cefc',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '202.3078',
+  volume: '10641.3894',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1080,
+  token: '0x2010c480b73fd0865b6d2f164660da852d178d5d',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '109.3600',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1098,
+  token: '0x20170890ef210e402578f97d6b179784c45f3a1b',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '22.4000',
+  volume: '1156.6192',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1186,
+  token: '0x22fb1288d3914bf149d0e0d9f23bd7f742517052',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.5635',
+  volume: '28.1746',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1204,
+  token: '0x2331fe160c3018b2ea69296eac349af5aa0b8cd1',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.9529',
+  volume: '49.0755',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1305,
+  token: '0x26ccc79ceeec918e01bbd5c04a64767919f9ec1a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1000',
+  volume: '6.5090',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1318,
+  token: '0x27c30545dc2ba4b3bfdcb9f807a0214f4b06f034',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.6965',
+  volume: '87.3700',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1375,
+  token: '0x2a7c9f7719367006e9bd20d0555025efb86d7d5d',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0100',
+  volume: '0.7800',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1435,
+  token: '0x2b86741b2fbb1ddb8e7387965cf22ec656a38dc1',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '511.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1506,
+  token: '0x2e5ab2292632cbcb434e494b72444335004b84bf',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '49.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1529,
+  token: '0x2f3640655d076b45d1fa10da0f6d880329c9d553',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '56.5700',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1606,
+  token: '0x30668ab855dee56a62479b0f22e83c54bd068446',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '101.6000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1685,
+  token: '0x347892d4cd347d546ec6ba9f70e77a7c03257e66',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.4100',
+  volume: '21.3100',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1694,
+  token: '0x34a1a58de8ff7ea0a690888d9b8ae646a8480fa4',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '511.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1722,
+  token: '0x354cf3625e9cd81dca0c33bb48d0a3620e9889e1',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.3000',
+  volume: '15.6000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1885,
+  token: '0x3ac16e7177a55d5fd8f8ab58263d1c764d462fde',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1400',
+  volume: '7.2100',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 1973,
+  token: '0x3c20f694df207edd49408cf722898bc9002287b9',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '502.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2037,
+  token: '0x3ecf927de060f57e0ed3f565ad081ec8d025f925',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '103.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2084,
+  token: '0x416cb9befbe169b2194e734e35b38980b2497b4a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '9.0000',
+  volume: '450.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2101,
+  token: '0x41c16c27ef654ba98f6c68e927c2efcef1c170e0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.2000',
+  volume: '10.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2109,
+  token: '0x4313842762a73e5076fe2b769e3d3f77f1524a93',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '100.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2163,
+  token: '0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '54.1162',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2182,
+  token: '0x46b00b4bf04c2c94ae67576004a3a247b9400ade',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0001',
+  volume: '0.0064',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2252,
+  token: '0x499a6c19f5537dd6005e2b5c6e1263103f558ba4',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.3000',
+  volume: '19.6200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2268,
+  token: '0x4a6cd874c3da159f88be3c7351bde37cee6b4863',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.4792',
+  volume: '23.4797',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2332,
+  token: '0x4b9c173c81ea2b6804b99ac91846c62bdb74fe72',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.8000',
+  volume: '48.2400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2363,
+  token: '0x4d3101aa9bea5842fc41b769c00787fbd33660fc',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '106.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2374,
+  token: '0x4de69c31f81b34a88f91dfb0a15db0245a1e52ce',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.7340',
+  volume: '38.7552',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2453,
+  token: '0x51b99b27151d587e8891d780227c9e1ab863525c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0300',
+  volume: '1.5900',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2460,
+  token: '0x529ff4d9b07acd6366d0c3eb077ebaa2b06e71c4',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '5.0000',
+  volume: '337.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2633,
+  token: '0x5a722eda908e3db61c9a14cce757ce673f5e3a17',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.2710',
+  volume: '13.9580',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2693,
+  token: '0x5b571d103e670848ce8cde37f93821c9c93c7c43',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '3.0000',
+  volume: '167.2200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2789,
+  token: '0x5d0436f003aef56990194f79a242bc185843aea5',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '89.0000',
+  volume: '4930.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2825,
+  token: '0x5d9eb5fc910176b08efa5f8d13812b85fdf3394b',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '126.0000',
+  volume: '6317.6400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2861,
+  token: '0x5e29f1b62c15658e76671e199a7f16afddc9ad76',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0300',
+  volume: '3.9201',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 2930,
+  token: '0x60888b47eb7290eaa8823568fcffa17da1a853d9',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.7200',
+  volume: '36.7200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3055,
+  token: '0x690602eb0bf5607e3586f1d3e4c4601ef6e4a89f',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.8000',
+  volume: '52.4535',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3123,
+  token: '0x6c76cb9ff41b40f75fe8424268370a6c58f8468a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1500',
+  volume: '7.7835',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3139,
+  token: '0x6f0e040d9f02830c6eea5b287ad74369a9e5f1e1',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '111.2200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3186,
+  token: '0x70724f4332d7ee1918f71236c1746cdda732d90a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.5000',
+  volume: '75.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3287,
+  token: '0x7318c373695f8f3c8987a158d41d65eed4badb25',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '100.5800',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3348,
+  token: '0x76dbeb740ecd1f3b052a9afa302abc7eb4fb5390',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1000',
+  volume: '7.4800',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3408,
+  token: '0x7909090541d646a262a3062639298772a2c79daa',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '112.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3465,
+  token: '0x7a684f6d9a34175d642eedb31fa545604d8d3acf',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.3217',
+  volume: '17.6774',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3507,
+  token: '0x7dfeee178fc1f929a88ad69e4e8d493600dd26d0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '58.5600',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3546,
+  token: '0x801560797ab66934854b9cefe7711da55c479e21',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1010',
+  volume: '4.9692',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3609,
+  token: '0x83b16b1dcaaeb59caa13b96da260d8b15671822a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '5.0000',
+  volume: '355.9500',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3671,
+  token: '0x854a0cfa24012937d3d15682ecc3d5b474bfa97e',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '51.1000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3717,
+  token: '0x86b4f8135a39dc349a963969f33c3d030726cf61',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1870',
+  volume: '10.2019',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 3836,
+  token: '0x8a7cc65bd33641bd349b8a6dea34e2b73a0919b0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '3.9578',
+  volume: '207.7767',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4034,
+  token: '0x90a315a3a047bf09653a9ff5c0154a0a6e85482c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.7447',
+  volume: '97.4083',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4073,
+  token: '0x921db869845dfea51c7c9eb0395b8d6563ebeb5d',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.4000',
+  volume: '20.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4132,
+  token: '0x94fa7f8cb8453ad57cd133363b3012044647078c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1498',
+  volume: '7.9402',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4162,
+  token: '0x952d5aea7fe9ffb481b57ae9adb0714844d3c454',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.5000',
+  volume: '26.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4188,
+  token: '0x960e61f5c4107d71bd8936b010416738c250f91c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '73.0000',
+  volume: '3712.0500',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4226,
+  token: '0x9636b0af2bfef88c1de3c35b21c0fa58f5e1a38e',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '104.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4307,
+  token: '0x969e3e55c8a4d9c4cd5e2660a2000ae12aad9e3e',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '6.0000',
+  volume: '304.2600',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4338,
+  token: '0x994c698175e5dbe405a46df94fbd54999a3676c2',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.4000',
+  volume: '25.9120',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4355,
+  token: '0x9a7cc7e32a337499bb9fe54139fcc84ae9e2cef8',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.2700',
+  volume: '13.9313',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4545,
+  token: '0xa3947ea22a8200b217885a7e9c9bcbf704349509',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '22.9316',
+  volume: '1221.3344',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4648,
+  token: '0xa5fd99f142ebf4343974137a3200e5197bf0c81b',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '15.0600',
+  volume: '903.6000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4679,
+  token: '0xa6004ca1fab428152f27135355f21d6bcdf355bd',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.3765',
+  volume: '22.5319',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4806,
+  token: '0xa918027e8e41152ca3420e78a09000ab40adb99b',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '19.5279',
+  volume: '1041.8724',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4882,
+  token: '0xacbd31b19cd7cca21ba3db4d143247668e62a88c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '20.6671',
+  volume: '1034.0218',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 4897,
+  token: '0xad010246ecc63d57797217fc3bc3b76e35c07cf3',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '100.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5077,
+  token: '0xb2960e73b260812e4326723c7136e7b1988a036a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '11.0000',
+  volume: '539.2000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5284,
+  token: '0xbd1ed7a8e0dae39e41c6cda5b14f3a21226aa1e3',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.5000',
+  volume: '26.1350',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5312,
+  token: '0xbdc1f8ccd117fe4e34f6c78f5293cd126b0c0474',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '580.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5335,
+  token: '0xbefbddece97a1d4182c96153d13ba0e487a63d7b',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.2000',
+  volume: '10.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5560,
+  token: '0xcbbb0da4bfe47876e977f3c1f40ebce23315e8d4',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.0230',
+  volume: '1.2880',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5603,
+  token: '0xccca5323052435aa4b0ec94c1d0255f17e4f495c',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '51.1000',
+  volume: '2768.4000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5627,
+  token: '0xcd7dc5e034b631331bc0cfc4ea71d2dc7b53c338',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '3.0000',
+  volume: '198.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5659,
+  token: '0xce111a198eb04f388aceb78c40ced6daf1b0514a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.9452',
+  volume: '100.6709',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5702,
+  token: '0xd08d2b199e9e5df407427d4085877d1fdff3b1d6',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.8500',
+  volume: '57.7843',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5825,
+  token: '0xd63265bbe136deff4f26e5976d21840c25df5e7a',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.3828',
+  volume: '20.5564',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5884,
+  token: '0xd7666cb7f9092638913229d09ef8c6084ab50555',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '16.0000',
+  volume: '833.7600',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 5983,
+  token: '0xd9e89bfebae447b42c1fa85c590716ec8820f737',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.5000',
+  volume: '124.5000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6042,
+  token: '0xdbc4e32037d5d8bbeb975006467e8b40737c77b0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '7.9000',
+  volume: '407.9200',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6144,
+  token: '0xdf7a80778a8be812e654291ffab21d61e9c21323',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.1000',
+  volume: '5.7040',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6223,
+  token: '0xe255caf8893382465368b8e1cd4ef8436acf0ade',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.9000',
+  volume: '57.2400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6312,
+  token: '0xe5e7aaf681baf92300dc6c5fa1d68d449e41f6c0',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '10.0000',
+  volume: '503.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6638,
+  token: '0xef2b6234e376c3b152c5febe47e1ca3c73cdaa9f',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.8000',
+  volume: '191.1840',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6659,
+  token: '0xefa67f9711b53d76d020d8b1bf05a03f0853b26f',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '51.8000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6692,
+  token: '0xf13d215776dac65c9c1e80d8f3daf6d91cc062d5',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '50.0000',
+  volume: '2850.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6814,
+  token: '0xf6e2736f28756b8d5918e0adf38842edb2e4971d',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '2.0000',
+  volume: '104.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6878,
+  token: '0xf96bcf8a5d9fa5258bcf243feb43500a2174abd6',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '4.5000',
+  volume: '228.2400',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6922,
+  token: '0xfc5073816fe9671859ef1e6936efd23bb7814274',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '14.0000',
+  volume: '784.0000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6941,
+  token: '0xfddb1a1a7313255cfe591d2c83b6baa3393a7cb6',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '0.5079',
+  volume: '26.1573',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🗑️ Enregistrement non trouvé dans les nouvelles données, sera supprimé: {
+  id: 6971,
+  token: '0xff1b4d71ae12538d86777a954b136cf723fccefd',
+  date: 2025-01-28T00:00:00.000Z,
+  quantity: '1.0000',
+  volume: '54.5000',
+  created_at: 2025-03-17T12:07:55.995Z,
+  updated_at: 2025-03-17T12:07:55.995Z
+}
+🔄 Mise à jour de 13 enregistrements...
+✅ 13 enregistrements mis à jour avec succès
+📝 Insertion de 53 nouveaux enregistrements...
+✅ 53 nouveaux enregistrements insérés avec succès
+🗑️ Suppression de 112 enregistrements...
+✅ 112 enregistrements supprimés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T00:00:09.467Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T01:00:00.251Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T01:00:07.706Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6904 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x90a315a3a047bf09653a9ff5c0154a0a6e85482c_2025-03-29
+  Ancien: { quantity: 1, volume: 54.9416 }
+  Nouveau: { quantity: 1.096, volume: 60.3015 }
+🔄 Mise à jour de 1 enregistrements...
+✅ 1 enregistrements mis à jour avec succès
+📝 Insertion de 7 nouveaux enregistrements...
+✅ 7 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T01:00:07.706Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T02:00:00.600Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T02:00:05.664Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6911 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x5c4e3fa9704d4212c6434190af6379cfbda47e13_2025-03-30
+  Ancien: { quantity: 0.113, volume: 5.6718 }
+  Nouveau: { quantity: 4.113, volume: 206.4718 }
+🔄 Mise à jour de 1 enregistrements...
+✅ 1 enregistrements mis à jour avec succès
+📝 Insertion de 1 nouveaux enregistrements...
+✅ 1 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T02:00:05.665Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T03:00:00.944Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T03:00:03.839Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6912 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x25b80dd341330508301c9a1339af7c271250e906_2025-03-30
+  Ancien: { quantity: 2, volume: 100.66 }
+  Nouveau: { quantity: 8, volume: 402.64 }
+❗ Différence détectée pour la clé 0x40bd4b65da163dd5a45bd683d593fc66efc309ce_2025-03-30
+  Ancien: { quantity: 0.0597, volume: 3 }
+  Nouveau: { quantity: 8.0597, volume: 404.92 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+📝 Insertion de 5 nouveaux enregistrements...
+✅ 5 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T03:00:03.839Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T04:00:00.237Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T04:00:04.457Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6917 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 1 nouveaux enregistrements...
+✅ 1 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T04:00:04.457Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T05:00:00.590Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T05:00:04.878Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6918 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 1 nouveaux enregistrements...
+✅ 1 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T05:00:04.879Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T06:00:00.907Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T06:00:06.066Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6919 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x5c4e3fa9704d4212c6434190af6379cfbda47e13_2025-03-30
+  Ancien: { quantity: 4.113, volume: 206.4718 }
+  Nouveau: { quantity: 4.613, volume: 231.5718 }
+❗ Différence détectée pour la clé 0x9642a2379bc359c8b10ead2e06c4a4156bbb3f57_2025-03-30
+  Ancien: { quantity: 0, volume: 0 }
+  Nouveau: { quantity: 0.122, volume: 6.1732 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+📝 Insertion de 9 nouveaux enregistrements...
+✅ 9 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T06:00:06.066Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T07:00:00.231Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T07:00:02.588Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6928 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x40bd4b65da163dd5a45bd683d593fc66efc309ce_2025-03-30
+  Ancien: { quantity: 8.0597, volume: 404.92 }
+  Nouveau: { quantity: 9, volume: 452.16 }
+❗ Différence détectée pour la clé 0x90f2d23ba8d860a03baf4b684cc307846146279e_2025-03-30
+  Ancien: { quantity: 5, volume: 251.9 }
+  Nouveau: { quantity: 5.01, volume: 252.41 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+📝 Insertion de 4 nouveaux enregistrements...
+✅ 4 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T07:00:02.589Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T08:00:00.552Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T08:00:06.883Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6932 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x3956fd7ce6d6c272c30200088a023630ae8ac2ad_2025-03-30
+  Ancien: { quantity: 0.09, volume: 4.5333 }
+  Nouveau: { quantity: 2, volume: 100.74 }
+❗ Différence détectée pour la clé 0x5c4e3fa9704d4212c6434190af6379cfbda47e13_2025-03-30
+  Ancien: { quantity: 4.613, volume: 231.5718 }
+  Nouveau: { quantity: 5, volume: 251 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+📝 Insertion de 3 nouveaux enregistrements...
+✅ 3 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T08:00:06.884Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T09:00:00.528Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T09:00:05.621Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6935 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x4a6cd874c3da159f88be3c7351bde37cee6b4863_2025-03-30
+  Ancien: { quantity: 0.0002, volume: 0.01 }
+  Nouveau: { quantity: 0.0004, volume: 0.02 }
+🔄 Mise à jour de 1 enregistrements...
+✅ 1 enregistrements mis à jour avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T09:00:05.622Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T10:00:00.879Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T10:00:07.915Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6935 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 8 nouveaux enregistrements...
+✅ 8 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T10:00:07.916Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T11:00:00.239Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T11:00:04.610Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6943 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 2 nouveaux enregistrements...
+✅ 2 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T11:00:04.610Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T12:00:00.086Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T12:00:05.017Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6945 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x6f0e040d9f02830c6eea5b287ad74369a9e5f1e1_2025-03-30
+  Ancien: { quantity: 1, volume: 55.61 }
+  Nouveau: { quantity: 5, volume: 278.05 }
+❗ Différence détectée pour la clé 0xb33cd98c0018295aeec82a86bb3d5bcd1cd94a28_2025-03-30
+  Ancien: { quantity: 1, volume: 52.87 }
+  Nouveau: { quantity: 2, volume: 105.74 }
+🔄 Mise à jour de 2 enregistrements...
+✅ 2 enregistrements mis à jour avec succès
+📝 Insertion de 1 nouveaux enregistrements...
+✅ 1 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T12:00:05.018Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T13:00:00.096Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T13:00:06.172Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6946 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 4 nouveaux enregistrements...
+✅ 4 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T13:00:06.172Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T14:00:00.371Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T14:00:05.063Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6950 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 2 nouveaux enregistrements...
+✅ 2 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T14:00:05.063Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T15:00:00.687Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T15:00:02.895Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6952 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x2e5ab2292632cbcb434e494b72444335004b84bf_2025-03-30
+  Ancien: { quantity: 4, volume: 196 }
+  Nouveau: { quantity: 7, volume: 346.6 }
+❗ Différence détectée pour la clé 0x4ae9d3343bbc6a894b7ee7f843c224c953f1661b_2025-03-30
+  Ancien: { quantity: 1, volume: 50.73 }
+  Nouveau: { quantity: 2, volume: 101.36 }
+❗ Différence détectée pour la clé 0x83b16b1dcaaeb59caa13b96da260d8b15671822a_2025-03-30
+  Ancien: { quantity: 0.1431, volume: 10 }
+  Nouveau: { quantity: 0.9115, volume: 63.6756 }
+🔄 Mise à jour de 3 enregistrements...
+✅ 3 enregistrements mis à jour avec succès
+📝 Insertion de 8 nouveaux enregistrements...
+✅ 8 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T15:00:02.895Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T16:00:00.977Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T16:00:05.375Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6971 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 4 nouveaux enregistrements...
+✅ 4 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T16:00:05.376Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+

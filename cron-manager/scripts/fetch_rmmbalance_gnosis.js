@@ -68,14 +68,6 @@ const RPC_ENDPOINTS = [
   {
     name: "Gnosis Public",
     url: "https://rpc.gnosischain.com"
-  },
-  {
-    name: "Gnosis Ankr",
-    url: "https://rpc.ankr.com/gnosis"
-  },
-  {
-    name: "Blast API",
-    url: "https://gnosis-mainnet.blastapi.io/b5a775dda0c2e49494c8c6be42c025ec"
   }
 ];
 

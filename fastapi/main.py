@@ -77,7 +77,7 @@ instrumentator.instrument(app).expose(app)
 # ----------------------------
 # Chemins des scripts Node.js
 # ----------------------------
-NODE_SCRIPT_WALLETBALANCE = "/app/fetch_wallet_balances.js"
+NODE_SCRIPT_WALLETBALANCE = "/app/fetch_walletbalance_gnosis1.js"
 NODE_SCRIPT_RMMBALANCE = "/app/fetch_rmmbalance_gnosis.js"
 NODE_SCRIPT_REALTOKEN = "/app/fetch_realt_tokens.js"
 NODE_SCRIPT_TOKENSVOLUME = "/app/fetch_tokens_volume.js"

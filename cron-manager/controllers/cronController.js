@@ -181,10 +181,14 @@ const cronController = {
           });
         });
         
-        logs = logContent || "Fichier de log vide.";
+        // Inverser l'ordre des lignes pour afficher les plus récentes en premier
+        logs = logContent ? logContent.split('\n').reverse().join('\n') : "Fichier de log vide.";
       }
       
-      res.render('logs', { job, logs });
+      // Récupérer l'historique des exécutions
+      const executionHistory = await CronJob.getJobExecutionHistory(id);
+      
+      res.render('logs', { job, logs, executionHistory });
     } catch (error) {
       console.error(`Erreur lors de la récupération des logs de la tâche ${req.params.id}:`, error);
       res.status(500).render('error', { error: 'Erreur lors de la récupération des logs' });

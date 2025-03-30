@@ -114,82 +114,9 @@ async function queryGraphForBatch(addressBatch) {
 
 // Synchronise les balances des comptes
 async function syncBalancesForAccounts(accounts) {
-  const newRecordsMap = new Map();
-  const activeWalletTokens = new Set();
-
-  if (!accounts || accounts.length === 0) {
-    console.warn("⚠️ Aucun compte trouvé dans la réponse GraphQL.");
-    return;
-  }
-
-  for (const account of accounts) {
-    if (!account || !account.address) {
-      console.warn(`⚠️ Compte invalide reçu:`, account);
-      continue;
-    }
-
-    const wallet = account.address.toLowerCase();
-
-    if (!account.balances || account.balances.length === 0) {
-      console.warn(`⚠️ Aucun solde trouvé pour le compte ${wallet}`);
-      continue;
-    }
-
-    for (const balance of account.balances) {
-      if (!balance.token || !balance.token.address) {
-        console.warn(`⚠️ Balance invalide reçue:`, balance);
-        continue;
-      }
-
-      const token = balance.token.address.toLowerCase();
-      const amount = parseFloat(balance.amount);
-      const type = "wallet";
-
-      const key = `${wallet}_${token}_${amount}_${type}`;
-      newRecordsMap.set(key, { wallet, token, amount, type });
-      activeWalletTokens.add(`${wallet}_${token}`);
-    }
-  }
-
-  const existingRecordsMap = await getExistingBalances();
-  const recordsToUpdate = [];
-  const recordsToInsert = [];
-  const recordsToDelete = [];
-
-  // Traiter les nouveaux enregistrements et les mises à jour
-  for (const [key, newRecord] of newRecordsMap) {
-    const walletTokenKey = `${newRecord.wallet}_${newRecord.token}`;
-    
-    // Chercher un enregistrement existant avec le même couple wallet_token
-    let existingRecord = null;
-    for (const [existingKey, record] of existingRecordsMap) {
-      if (record.wallet === newRecord.wallet && record.token === newRecord.token) {
-        existingRecord = record;
-        existingRecordsMap.delete(existingKey);
-        break;
-      }
-    }
-
-    if (existingRecord) {
-      // Mettre à jour l'enregistrement existant
-      recordsToUpdate.push({ id: existingRecord.id, ...newRecord });
-    } else {
-      // Insérer un nouvel enregistrement
-      recordsToInsert.push(newRecord);
-    }
-  }
-
-  // Supprimer uniquement les enregistrements qui n'existent plus dans TheGraph
-  for (const [key, rec] of existingRecordsMap) {
-    const walletTokenKey = `${rec.wallet}_${rec.token}`;
-    if (rec.type === "wallet" && !activeWalletTokens.has(walletTokenKey)) {
-      recordsToDelete.push(rec.id);
-    }
-  }
-
-  if (recordsToUpdate.length) await updateBalanceRecords(recordsToUpdate);
-  if (recordsToInsert.length) await insertBalanceRecords(recordsToInsert);
-  if (recordsToDelete.length) await deleteBalanceRecords(recordsToDelete);
+  console.error("❌ ERREUR: La fonction syncBalancesForAccounts obsolète a été appelée au lieu de syncBalancesForBatchAccounts");
+  console.error("❌ Cette fonction a été remplacée et ne devrait plus être utilisée");
+  throw new Error("Fonction syncBalancesForAccounts obsolète");
 }
 
 // Récupération des enregistrements existants dans la table des balances
@@ -371,15 +298,140 @@ async function syncWalletBalances() {
   const wallets = await getWallets();
   if (!wallets.length) return;
 
+  // Créer un ensemble global pour stocker toutes les combinaisons wallet_token actives
+  const globalActiveWalletTokens = new Set();
+  
+  // Collecter toutes les données d'abord sans supprimer
   for (const batch of batchArray(wallets.map(w => w.address), 100)) {
     const accounts = await queryGraphForBatch(batch);
     if (accounts.length) {
-      await syncBalancesForAccounts(accounts);
+      // Récupérer les combinaisons wallet_token actives de ce lot
+      for (const account of accounts) {
+        if (!account || !account.address) continue;
+        
+        const wallet = account.address.toLowerCase();
+        
+        if (!account.balances || account.balances.length === 0) continue;
+        
+        for (const balance of account.balances) {
+          if (!balance.token || !balance.token.address) continue;
+          
+          const token = balance.token.address.toLowerCase();
+          globalActiveWalletTokens.add(`${wallet}_${token}`);
+        }
+      }
+      
+      // Synchroniser les balances sans supprimer
+      await syncBalancesForBatchAccounts(accounts);
     }
   }
+  
+  // Maintenant supprimer les enregistrements qui ne sont plus actifs
+  await deleteInactiveRecords(globalActiveWalletTokens);
 
   console.log("✅ Synchronisation des balances terminée.");
   await pgClient.end();
+}
+
+// Version modifiée de syncBalancesForAccounts qui ne fait pas de suppressions
+async function syncBalancesForBatchAccounts(accounts) {
+  const newRecordsMap = new Map();
+
+  if (!accounts || accounts.length === 0) {
+    console.warn("⚠️ Aucun compte trouvé dans la réponse GraphQL.");
+    return;
+  }
+
+  for (const account of accounts) {
+    if (!account || !account.address) {
+      console.warn(`⚠️ Compte invalide reçu:`, account);
+      continue;
+    }
+
+    const wallet = account.address.toLowerCase();
+
+    if (!account.balances || account.balances.length === 0) {
+      console.warn(`⚠️ Aucun solde trouvé pour le compte ${wallet}`);
+      continue;
+    }
+
+    for (const balance of account.balances) {
+      if (!balance.token || !balance.token.address) {
+        console.warn(`⚠️ Balance invalide reçue:`, balance);
+        continue;
+      }
+
+      const token = balance.token.address.toLowerCase();
+      const amount = parseFloat(balance.amount);
+      const type = "wallet";
+
+      const key = `${wallet}_${token}_${amount}_${type}`;
+      newRecordsMap.set(key, { wallet, token, amount, type });
+    }
+  }
+
+  const existingRecordsMap = await getExistingBalances();
+  const recordsToUpdate = [];
+  const recordsToInsert = [];
+
+  // Traiter les nouveaux enregistrements et les mises à jour
+  for (const [key, newRecord] of newRecordsMap) {
+    const walletTokenKey = `${newRecord.wallet}_${newRecord.token}`;
+    
+    // Chercher un enregistrement existant avec le même couple wallet_token
+    let existingRecord = null;
+    for (const [existingKey, record] of existingRecordsMap) {
+      if (record.wallet === newRecord.wallet && record.token === newRecord.token) {
+        existingRecord = record;
+        existingRecordsMap.delete(existingKey);
+        break;
+      }
+    }
+
+    if (existingRecord) {
+      // Mettre à jour l'enregistrement existant
+      recordsToUpdate.push({ id: existingRecord.id, ...newRecord });
+    } else {
+      // Insérer un nouvel enregistrement
+      recordsToInsert.push(newRecord);
+    }
+  }
+
+  if (recordsToUpdate.length) await updateBalanceRecords(recordsToUpdate);
+  if (recordsToInsert.length) await insertBalanceRecords(recordsToInsert);
+}
+
+// Nouvelle fonction pour supprimer les enregistrements inactifs à la fin
+async function deleteInactiveRecords(activeWalletTokens) {
+  try {
+    console.log(`🔍 Recherche des enregistrements inactifs parmi ${activeWalletTokens.size} tokens actifs...`);
+    
+    // Récupérer tous les enregistrements
+    const query = `
+      SELECT id, lower(wallet) as wallet, lower(token) as token, type
+      FROM token_balances
+      WHERE type = 'wallet'
+    `;
+    
+    const result = await pgClient.query(query);
+    const recordsToDelete = [];
+    
+    for (const rec of result.rows) {
+      const walletTokenKey = `${rec.wallet}_${rec.token}`;
+      if (!activeWalletTokens.has(walletTokenKey)) {
+        recordsToDelete.push(rec.id);
+      }
+    }
+    
+    if (recordsToDelete.length) {
+      console.log(`🗑️ Suppression de ${recordsToDelete.length} enregistrements inactifs...`);
+      await deleteBalanceRecords(recordsToDelete);
+    } else {
+      console.log(`✅ Aucun enregistrement inactif à supprimer`);
+    }
+  } catch (err) {
+    console.error("❌ Erreur lors de la suppression des enregistrements inactifs:", err);
+  }
 }
 
 syncWalletBalances();

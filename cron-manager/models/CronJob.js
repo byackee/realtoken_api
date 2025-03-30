@@ -651,6 +651,68 @@ class CronJob {
       console.error("❌ Erreur lors de la mise à jour des prochaines exécutions:", error);
     }
   }
+  
+  // Récupérer l'historique des exécutions pour un job donné
+  static async getJobExecutionHistory(id) {
+    try {
+      // Vérifier si le job existe
+      const job = await this.getJobById(id);
+      if (!job) {
+        throw new Error(`Tâche ${id} non trouvée`);
+      }
+      
+      const scriptName = path.basename(job.script_path);
+      const logFilePath = path.join(LOGS_DIR, `${scriptName}.log`);
+      
+      // Si le fichier de logs n'existe pas, retourner un tableau vide
+      if (!fs.existsSync(logFilePath)) {
+        return [];
+      }
+      
+      // Utiliser grep pour extraire les lignes de début et fin d'exécution
+      const execStartPattern = "DÉBUT DE L'EXÉCUTION";
+      const execEndPattern = "FIN DE L'EXÉCUTION";
+      
+      const executions = await new Promise((resolve, reject) => {
+        exec(`grep -A 1 -B 0 "${execEndPattern}" ${logFilePath} | grep -v "^--$"`, (error, stdout, stderr) => {
+          if (error && error.code !== 1) { // grep returns 1 if no matches, which is not an error for us
+            reject(error);
+            return;
+          }
+          
+          // Analyser les résultats
+          const lines = stdout.split('\n').filter(line => line.trim() !== '');
+          const history = [];
+          
+          for (const line of lines) {
+            if (line.includes(execEndPattern)) {
+              // Extraire la date et le statut
+              const match = line.match(/\[(.*?)\].*?STATUT: (.*?)\)/);
+              if (match) {
+                const timestamp = match[1];
+                const status = match[2];
+                
+                history.push({
+                  timestamp: new Date(timestamp),
+                  status: status
+                });
+              }
+            }
+          }
+          
+          // Trier par date décroissante (plus récent en premier)
+          history.sort((a, b) => b.timestamp - a.timestamp);
+          
+          resolve(history);
+        });
+      });
+      
+      return executions;
+    } catch (error) {
+      console.error(`Erreur lors de la récupération de l'historique d'exécution pour la tâche ${id}:`, error);
+      throw error;
+    }
+  }
 }
 
 // Connecter à la base de données au démarrage
