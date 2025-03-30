@@ -2834,3 +2834,112 @@ Enregistrements existants récupérés
 
 [2025-03-30T16:00:05.376Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
 
+[2025-03-30T17:00:00.726Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T17:00:05.016Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6975 enregistrements existants récupérés
+Enregistrements existants récupérés
+📝 Insertion de 5 nouveaux enregistrements...
+✅ 5 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T17:00:05.016Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T18:00:00.151Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T18:00:07.337Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6980 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x3f8ecb2d158cde11587270ab3f9744e0f3108354_2025-03-30
+  Ancien: { quantity: 3, volume: 159.9 }
+  Nouveau: { quantity: 4, volume: 213.2 }
+🔄 Mise à jour de 1 enregistrements...
+✅ 1 enregistrements mis à jour avec succès
+📝 Insertion de 7 nouveaux enregistrements...
+✅ 7 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T18:00:07.337Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T19:00:00.581Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T19:00:05.688Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6987 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x19d01c13e6e5a1a990db9821358a591583f63234_2025-03-30
+  Ancien: { quantity: 0.713, volume: 38.502 }
+  Nouveau: { quantity: 2, volume: 107.3565 }
+❗ Différence détectée pour la clé 0x7d3f9309822a47e41dd4756dbe162580e2546f33_2025-03-30
+  Ancien: { quantity: 1, volume: 49 }
+  Nouveau: { quantity: 2, volume: 100.6 }
+❗ Différence détectée pour la clé 0x960e61f5c4107d71bd8936b010416738c250f91c_2025-03-30
+  Ancien: { quantity: 2, volume: 109.98 }
+  Nouveau: { quantity: 3.7356, volume: 205.4223 }
+❗ Différence détectée pour la clé 0x9642a2379bc359c8b10ead2e06c4a4156bbb3f57_2025-03-30
+  Ancien: { quantity: 0.122, volume: 6.1732 }
+  Nouveau: { quantity: 1.122, volume: 56.7732 }
+🔄 Mise à jour de 4 enregistrements...
+✅ 4 enregistrements mis à jour avec succès
+📝 Insertion de 6 nouveaux enregistrements...
+✅ 6 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T19:00:05.688Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+
+[2025-03-30T20:00:00.080Z] ========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: Fetch Tokens Volume (ID: 7) ==========
+[2025-03-30T20:00:02.583Z] 🔄 Début de la récupération des volumes de tokens...
+📅 Date limite: 2025-01-29
+🔗 URL de l'API: https://gateway-arbitrum.network.thegraph.com/api/ae36a6bfa6af7dfa3487d2cecf583ebe/subgraphs/id/4eJa4rKCR5f8fq48BKbYBPvf7DWHppGZRvfiVUSFXBGR
+📥 Récupération des tokens (skip: 0)...
+✅ 701 tokens récupérés
+✅ Total des tokens récupérés : 701
+🔄 Récupération des enregistrements existants depuis PostgreSQL...
+✅ 6993 enregistrements existants récupérés
+Enregistrements existants récupérés
+❗ Différence détectée pour la clé 0x0675e8f4a52ea6c845cb6427af03616a2af42170_2025-03-30
+  Ancien: { quantity: 1.0085, volume: 45.3807 }
+  Nouveau: { quantity: 2.0085, volume: 88.3807 }
+❗ Différence détectée pour la clé 0x2e5ab2292632cbcb434e494b72444335004b84bf_2025-03-30
+  Ancien: { quantity: 7, volume: 346.6 }
+  Nouveau: { quantity: 7.86, volume: 390.03 }
+❗ Différence détectée pour la clé 0x5a722eda908e3db61c9a14cce757ce673f5e3a17_2025-03-30
+  Ancien: { quantity: 26, volume: 1377.9121 }
+  Nouveau: { quantity: 26.0203, volume: 1378.9831 }
+❗ Différence détectée pour la clé 0x730fbb27b650a2a3bcaa6729e635dc255acee343_2025-03-30
+  Ancien: { quantity: 10, volume: 614.8 }
+  Nouveau: { quantity: 12, volume: 737.76 }
+❗ Différence détectée pour la clé 0x854a0cfa24012937d3d15682ecc3d5b474bfa97e_2025-03-30
+  Ancien: { quantity: 3, volume: 147 }
+  Nouveau: { quantity: 6, volume: 299.4 }
+❗ Différence détectée pour la clé 0x960e61f5c4107d71bd8936b010416738c250f91c_2025-03-30
+  Ancien: { quantity: 3.7356, volume: 205.4223 }
+  Nouveau: { quantity: 5.7356, volume: 315.4123 }
+❗ Différence détectée pour la clé 0x9642a2379bc359c8b10ead2e06c4a4156bbb3f57_2025-03-30
+  Ancien: { quantity: 1.122, volume: 56.7732 }
+  Nouveau: { quantity: 3.7196, volume: 188.2138 }
+❗ Différence détectée pour la clé 0xafa816f7fff6f252e5cdbd40b80d9ef77b7e289b_2025-03-30
+  Ancien: { quantity: 5.73, volume: 343.5135 }
+  Nouveau: { quantity: 5.98, volume: 358.6385 }
+🔄 Mise à jour de 8 enregistrements...
+✅ 8 enregistrements mis à jour avec succès
+📝 Insertion de 2 nouveaux enregistrements...
+✅ 2 nouveaux enregistrements insérés avec succès
+✅ Synchronisation des volumes de tokens terminée
+
+[2025-03-30T20:00:02.583Z] ========== FIN DE L'EXÉCUTION (STATUT: success) ==========
+

@@ -4,6 +4,20 @@ const path = require('path');
 const cors = require('cors');
 const { CronJob } = require('./models/CronJob');
 
+// Importer les métriques Prometheus
+let metrics;
+try {
+  metrics = require('./prom-metrics');
+} catch (error) {
+  console.error('❌ Erreur lors du chargement des métriques Prometheus:', error);
+  // Créer un objet factice pour éviter les erreurs
+  metrics = {
+    register: {
+      metrics: () => 'Metrics unavailable'
+    }
+  };
+}
+
 // Créer l'application Express
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +32,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(require('./middleware/ejsLayout'));
+
+// Endpoint pour les métriques Prometheus
+app.get('/metrics', async (req, res) => {
+  try {
+    // Mettre à jour les métriques avec les données les plus récentes
+    const jobs = await CronJob.getAllJobs();
+    
+    // Renvoyer les métriques au format Prometheus
+    res.set('Content-Type', metrics.register.contentType);
+    res.end(await metrics.register.metrics());
+  } catch (error) {
+    console.error('Erreur lors de la génération des métriques:', error);
+    res.status(500).send('Erreur lors de la génération des métriques');
+  }
+});
 
 // Routes
 const cronRoutes = require('./routes/cronRoutes');

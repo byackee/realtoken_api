@@ -5,6 +5,21 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
+// Importer les métriques Prometheus
+let metrics;
+try {
+  metrics = require('../prom-metrics');
+} catch (error) {
+  console.error('❌ Erreur lors du chargement des métriques Prometheus:', error);
+  // Définir un objet factice pour éviter les erreurs si les métriques ne sont pas disponibles
+  metrics = {
+    recordJobExecution: () => {},
+    measureJobExecutionTime: (jobId, jobName, callback) => callback,
+    updateJobsCountMetrics: () => {},
+    updateJobStatusMetrics: () => {}
+  };
+}
+
 // Configuration PostgreSQL pour stocker les tâches cron
 const pgClient = new Client({
   host: process.env.DB_HOST || "postgres",
@@ -223,6 +238,10 @@ class CronJob {
         console.log(`✅ ${successCount}/${updateBatch.length} tâches mises à jour avec succès`);
       }
       
+      // Mettre à jour les métriques Prometheus
+      metrics.updateJobsCountMetrics(result.rows);
+      metrics.updateJobStatusMetrics(result.rows);
+      
       return result.rows;
     } catch (error) {
       console.error("❌ Erreur lors de la récupération des tâches:", error);
@@ -361,40 +380,53 @@ class CronJob {
         console.log(`Exécution de la tâche ${job.name} (ID: ${job.id})`);
         logToFile(scriptPath, `========== DÉBUT DE L'EXÉCUTION DE LA TÂCHE: ${job.name} (ID: ${job.id}) ==========`);
         
-        try {
-          // Exécuter le script Node.js
-          const childProcess = exec(`node ${scriptPath}`, (error, stdout, stderr) => {
-            const now = new Date();
-            let status = 'success';
-            
-            if (error) {
-              console.error(`Erreur lors de l'exécution de la tâche ${job.id}:`, error);
-              console.error(stderr);
-              logToFile(scriptPath, `ERREUR: ${stderr}`);
-              status = 'failed';
-            } else {
-              console.log(`Sortie de la tâche ${job.id}:`, stdout);
-              logToFile(scriptPath, stdout);
-            }
-            
-            // Ajouter une ligne de séparation
-            logToFile(scriptPath, `========== FIN DE L'EXÉCUTION (STATUT: ${status}) ==========\n`);
-            
-            // Calculer la prochaine exécution
-            const nextRun = getNextCronRunTime(job.cron_expression);
-            
-            // Mettre à jour la date de dernière exécution, le statut et la prochaine exécution
-            pgClient.query(
-              'UPDATE cron_jobs SET last_run = $1, last_status = $2, next_run = $3 WHERE id = $4',
-              [now, status, nextRun, job.id]
-            ).catch(err => {
-              console.error(`Erreur lors de la mise à jour du statut de la tâche ${job.id}:`, err);
-            });
+        // Début de la mesure de performance avec Prometheus
+        const executeWithMetrics = metrics.measureJobExecutionTime(job.id, job.name, async (error, stdout, stderr) => {
+          const now = new Date();
+          let status = 'success';
+          
+          if (error) {
+            console.error(`Erreur lors de l'exécution de la tâche ${job.id}:`, error);
+            console.error(stderr);
+            logToFile(scriptPath, `ERREUR: ${stderr}`);
+            status = 'failed';
+          } else {
+            console.log(`Sortie de la tâche ${job.id}:`, stdout);
+            logToFile(scriptPath, stdout);
+          }
+          
+          // Enregistrer l'exécution dans les métriques Prometheus
+          metrics.recordJobExecution(job.id, job.name, status);
+          
+          // Ajouter une ligne de séparation
+          logToFile(scriptPath, `========== FIN DE L'EXÉCUTION (STATUT: ${status}) ==========\n`);
+          
+          // Calculer la prochaine exécution
+          const nextRun = getNextCronRunTime(job.cron_expression);
+          
+          // Mettre à jour la date de dernière exécution, le statut et la prochaine exécution
+          pgClient.query(
+            'UPDATE cron_jobs SET last_run = $1, last_status = $2, next_run = $3 WHERE id = $4',
+            [now, status, nextRun, job.id]
+          ).catch(err => {
+            console.error(`Erreur lors de la mise à jour du statut de la tâche ${job.id}:`, err);
           });
+          
+          // Mettre à jour les métriques pour la prochaine exécution
+          const allJobs = await this.getAllJobs();
+          metrics.updateJobStatusMetrics(allJobs);
+        });
+        
+        try {
+          // Exécuter le script Node.js avec mesure des performances
+          const childProcess = exec(`node ${scriptPath}`, executeWithMetrics);
         } catch (execError) {
           console.error(`Erreur lors de l'exécution de la tâche ${job.id}:`, execError);
           logToFile(scriptPath, `ERREUR CRITIQUE: ${execError.message}`);
           logToFile(scriptPath, `========== FIN DE L'EXÉCUTION (STATUT: failed) ==========\n`);
+          
+          // Enregistrer l'échec dans les métriques Prometheus
+          metrics.recordJobExecution(job.id, job.name, 'failed');
           
           // Mettre à jour le statut en cas d'erreur
           const now = new Date();
@@ -427,6 +459,10 @@ class CronJob {
       }
       
       await pgClient.query(updateQuery, updateParams);
+      
+      // Mettre à jour les métriques après le changement de statut
+      const allJobs = await this.getAllJobs();
+      metrics.updateJobStatusMetrics(allJobs);
       
       return { ...job, status: 'running', next_run: nextRun };
     } catch (error) {
@@ -478,7 +514,8 @@ class CronJob {
       logToFile(scriptPath, `========== DÉBUT DE L'EXÉCUTION MANUELLE DE LA TÂCHE: ${job.name} (ID: ${job.id}) ==========`);
       
       return new Promise((resolve, reject) => {
-        exec(`node ${scriptPath}`, async (error, stdout, stderr) => {
+        // Utiliser le chronométrage des métriques pour l'exécution manuelle
+        const executeWithMetrics = metrics.measureJobExecutionTime(job.id, job.name, async (error, stdout, stderr) => {
           const now = new Date();
           let status = 'success';
           
@@ -487,10 +524,16 @@ class CronJob {
             console.error(stderr);
             logToFile(scriptPath, `ERREUR: ${stderr}`);
             status = 'failed';
+            
+            // Enregistrer l'échec dans les métriques Prometheus
+            metrics.recordJobExecution(job.id, job.name, 'failed');
             reject(error);
           } else {
             console.log(`Sortie de la tâche ${job.id}:`, stdout);
             logToFile(scriptPath, stdout);
+            
+            // Enregistrer le succès dans les métriques Prometheus
+            metrics.recordJobExecution(job.id, job.name, 'success');
           }
           
           // Ajouter un log de fin
@@ -515,14 +558,24 @@ class CronJob {
             );
           }
           
+          // Mettre à jour les métriques après l'exécution
+          const allJobs = await this.getAllJobs();
+          metrics.updateJobStatusMetrics(allJobs);
+          
           resolve({ ...job, last_run: now, last_status: status, next_run: nextRun });
         });
+        
+        // Exécuter le script avec métriques
+        exec(`node ${scriptPath}`, executeWithMetrics);
       });
     } catch (error) {
       console.error(`Erreur lors de l'exécution immédiate de la tâche ${id}:`, error);
       if (job && job.script_path) {
         logToFile(job.script_path, `ERREUR CRITIQUE: ${error.message}`);
         logToFile(job.script_path, `========== FIN DE L'EXÉCUTION MANUELLE (STATUT: failed) ==========\n`);
+        
+        // Enregistrer l'échec critique dans les métriques
+        metrics.recordJobExecution(job.id, job.name, 'failed');
       }
       throw error;
     }

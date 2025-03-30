@@ -14,7 +14,7 @@ COPY package*.json ./
 # Installer les dépendances
 RUN npm install
 # S'assurer que viem et winston sont bien installés localement aussi
-RUN npm install viem@latest winston@latest --save
+RUN npm install viem@latest winston@latest prom-client@latest --save
 
 # Créer les répertoires nécessaires
 RUN mkdir -p /app/scripts /app/scripts-examples /app/logs
@@ -28,8 +28,15 @@ COPY . .
 # Rendre le script d'entrée exécutable
 RUN chmod +x /app/docker-entrypoint.sh
 
-# Exposer le port
+# Exposer les ports
 EXPOSE 3000
+# Port pour les métriques Prometheus (normalement servi sur la même port 3000 mais /metrics)
+EXPOSE 9091
+
+# Labels pour Prometheus
+LABEL prometheus.scrape="true"
+LABEL prometheus.port="3000"
+LABEL prometheus.path="/metrics"
 
 # Définir les variables d'environnement
 ENV NODE_ENV=production \
