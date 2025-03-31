@@ -15,6 +15,8 @@ COPY package*.json ./
 RUN npm install
 # S'assurer que viem et winston sont bien installés localement aussi
 RUN npm install viem@latest winston@latest prom-client@latest --save
+# S'assurer que express est bien installé
+RUN npm install express --save
 
 # Créer les répertoires nécessaires
 RUN mkdir -p /app/scripts /app/scripts-examples /app/logs
@@ -24,6 +26,9 @@ COPY scripts/*.js /app/scripts-examples/
 
 # Copier le reste des fichiers de l'application
 COPY . .
+
+# Créer un lien symbolique vers le répertoire scripts à la racine
+RUN ln -s /app/scripts /app/scripts
 
 # Rendre le script d'entrée exécutable
 RUN chmod +x /app/docker-entrypoint.sh

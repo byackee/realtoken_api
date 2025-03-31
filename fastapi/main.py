@@ -77,13 +77,13 @@ instrumentator.instrument(app).expose(app)
 # ----------------------------
 # Chemins des scripts Node.js
 # ----------------------------
-NODE_SCRIPT_WALLETBALANCE = "/app/fetch_walletbalance_gnosis1.js"
-NODE_SCRIPT_RMMBALANCE = "/app/fetch_rmmbalance_gnosis.js"
-NODE_SCRIPT_REALTOKEN = "/app/fetch_realt_tokens.js"
-NODE_SCRIPT_TOKENSVOLUME = "/app/fetch_tokens_volume.js"
-NODE_SCRIPT_YAM_TRANSACTIONS = "/app/fetch_YAM_transactions_history.js"  # Nouveau script de synchronisation des transactions
-NODE_SCRIPT_FETCH_USER_ADDRESSES = "/app/fetch_userId_addresses.js"
-NODE_SCRIPT_TRANSACTIONS_HISTORY = "/app/fetch_transactions_history.js"
+NODE_SCRIPT_WALLETBALANCE = "/app/scripts/fetch_wallet_balances.js"
+NODE_SCRIPT_RMMBALANCE = "/app/scripts/fetch_rmmbalance_gnosis.js"
+NODE_SCRIPT_REALTOKEN = "/app/scripts/fetch_realt_tokens.js"
+NODE_SCRIPT_TOKENSVOLUME = "/app/scripts/fetch_tokens_volume.js"
+NODE_SCRIPT_YAM_TRANSACTIONS = "/app/scripts/fetch_YAM_transactions_history.js"
+NODE_SCRIPT_FETCH_USER_ADDRESSES = "/app/scripts/fetch_userId_addresses.js"
+NODE_SCRIPT_TRANSACTIONS_HISTORY = "/app/scripts/fetch_transactions_history.js"
 
 # ----------------------------
 # Durée minimale entre deux exécutions (en secondes)

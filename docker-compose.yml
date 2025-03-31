@@ -36,7 +36,9 @@ services:
       --JsonRpc.Host=0.0.0.0
       --JsonRpc.Port=8545
       --JsonRpc.EnabledModules=["eth","net","web3","txpool"]
-      --Sync.FastSync=true
+      --Sync.FastSync=false
+      --Sync.SnapSync=true
+      --Snapshot.DownloadUrl=https://checkpoint.gnosischain.com
       --Merge.Enabled=false
       --Init.IsMining=false
       --Init.DiagnosticMode=None
@@ -84,6 +86,7 @@ services:
       - geoip
     volumes:
       - ./fastapi:/app
+      - ./scripts:/app/scripts
       - geoip_data:/usr/share/GeoIP:ro
     environment:
       - NOCODB_URL=http://nocodb:8085
@@ -101,8 +104,8 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./cron-manager/scripts:/app/scripts
-      - ./cron-manager/logs:/app/logs
+      - ./cron-manager:/app
+      - ./scripts:/app/scripts
     environment:
       - DB_HOST=postgres
       - DB_USER=nocodb

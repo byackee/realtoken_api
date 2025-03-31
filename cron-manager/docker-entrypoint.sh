@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Installer les dépendances si node_modules n'existe pas ou est vide
+if [ ! -d "/app/node_modules" ] || [ -z "$(ls -A /app/node_modules)" ]; then
+  echo "📦 Installation des dépendances NPM..."
+  npm install express body-parser cors dotenv ejs node-cron pg viem winston cron-parser prom-client
+fi
+
 # Créer les répertoires nécessaires s'ils n'existent pas
 mkdir -p /app/scripts
 mkdir -p /app/logs

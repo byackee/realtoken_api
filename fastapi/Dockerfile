@@ -32,6 +32,9 @@ RUN pip install --no-cache-dir geoip2
 # Copie du reste du projet
 COPY --chown=root:root . .
 
+# Créer un lien symbolique vers le répertoire scripts à la racine
+RUN ln -s /app/scripts /app/scripts
+
 # Création d'un script d'initialisation pour installer pg au démarrage
 RUN echo '#!/bin/bash\n\
 if [ ! -d "/app/node_modules/pg" ]; then\n\
